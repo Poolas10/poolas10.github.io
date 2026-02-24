@@ -9,8 +9,7 @@ Welcome to the website. I am trying to create a place to access different resour
 
 These are the main societies I will pull from. 
 
-## Quick Access Images 
--[Link](quick-figures.md)
+## [Quick Access Images](quick-figures.md)
 
 ## Quick Access Guidelines:
 Here are a few quick links. 
