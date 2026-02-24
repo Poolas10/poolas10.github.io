@@ -1,5 +1,5 @@
 ---
-Title: "Geneal GI Resources"
+layout: "Geneal GI Resources"
 ---
 # General Information! 
 Welcome to the website. I am trying to create a place to access different resources and tools.
