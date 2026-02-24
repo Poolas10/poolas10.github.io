@@ -1,2 +1,2 @@
-# poolas10.github.io
+# General Information
 Welcome to the Website
