@@ -6,4 +6,4 @@
     </a>
     </p>
 
-<img src="https://www.gastrojournal.org/cms/10.1053/j.gastro.2019.10.026/asset/cdcb963f-cc22-42b4-8d33-11c4d8ac8d31/main.assets/gr1_lrg.jpg" alt="Colon">
+<img src="https://www.gastrojournal.org/cms/10.1053/j.gastro.2019.10.026/asset/cdcb963f-cc22-42b4-8d33-11c4d8ac8d31/main.assets/gr1_lrg.jpg" alt="Colon" style="width:500px;height:600px;">
