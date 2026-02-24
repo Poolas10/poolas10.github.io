@@ -1,5 +1,5 @@
 ---
-Title: "General GI Resources"
+Title: default
 ---
 # General Information! 
 Welcome to the website. I am trying to create a place to access different resources and tools.
