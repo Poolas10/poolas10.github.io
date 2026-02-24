@@ -11,10 +11,4 @@ These are the main societies I will pull from.
 
 ## [Quick Access Images](quick-figures.md)
 
-## Quick Access Guidelines:
-Here are a few quick links. 
-
-- [ACG Colon Cancer Screening Guideline](https://journals.lww.com/ajg/fulltext/2021/03000/acg_clinical_guidelines__colorectal_cancer.14.aspx)
-- 
-
-
+## [Quick Access Guidelines](quick-guidelines.md)
