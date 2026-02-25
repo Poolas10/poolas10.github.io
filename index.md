@@ -1,7 +1,7 @@
 ---
 Title: "Geneal GI Resources"
 ---
-# General GI Resources
+# GI Resources
 
 ### General Information! 
 Welcome to the website. I am trying to create a place to access different resources and tools. These are the main societies I will pull from. 
