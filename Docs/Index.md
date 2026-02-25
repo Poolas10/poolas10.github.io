@@ -1,7 +1,7 @@
 ---
 Title: "Geneal GI Resources"
 ---
-# General Information! 
+# General Information Test Page! 
 Welcome to the website. I am trying to create a place to access different resources and tools.
 
 - [ACG Guidelines](https://gi.org/guidelines/)
