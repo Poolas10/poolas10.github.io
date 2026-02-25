@@ -1,8 +1,10 @@
 ---
 Title: "Geneal GI Resources"
 ---
-# General Information! 
-Welcome to the website. I am trying to create a place to access different resources and tools.
+# General GI Resources
+
+### General Information! 
+Welcome to the website. I am trying to create a place to access different resources and tools. These are the main societies I will pull from. 
 
 - [ACG Guidelines](https://gi.org/guidelines/)
 - [ASGE Guidelines](https://www.asge.org/home/resources/publications/guidelines)
@@ -10,7 +12,6 @@ Welcome to the website. I am trying to create a place to access different resour
 - [AASLD Guidelines](https://www.aasld.org/practice-guidelines)
 - [NASPGHAN Guidelines](https://naspghan.org/professional-resources/clinical-guidelines/)
 
-These are the main societies I will pull from. 
 
 ## [Quick Access Images](quick-figures.md)
 
