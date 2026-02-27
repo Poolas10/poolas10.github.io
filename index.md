@@ -3,7 +3,7 @@ Title: "Geneal GI Resources"
 ---
 # GI Resources
 
-### General Information! 
+### General Information Updated?
 Welcome to the website. I am trying to create a place to access different resources and tools. These are the main societies I will pull from. 
 
 - [ACG Guidelines](https://gi.org/guidelines/)
