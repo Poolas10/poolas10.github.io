@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+:root {
+  --cream: #ddeef7;
+  --ink: #12202e;
+  --muted: #3a5a72;
+  --accent: #1a6fa8;
+  --rule: #a8cfe0;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  max-width: 720px;
+  padding: 60px 24px 0;
+  text-align: center;
+  animation: fadeUp .7s ease both;
+}
+
+header h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+header p.subtitle {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: var(--muted);
+  font-style: italic;
+  font-family: 'Lora', serif;
+}
+
+.rule {
+  width: 100%;
+  max-width: 720px;
+  padding: 0 24px;
+  margin: 32px 0;
+  animation: fadeUp .7s .1s ease both;
+}
+
+.rule hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+}
+
+.intro {
+  width: 100%;
+  max-width: 720px;
+  padding: 0 24px;
+  animation: fadeUp .7s .2s ease both;
+}
+
+.intro p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+nav.links {
+  width: 100%;
+  max-width: 720px;
+  padding: 40px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeUp .7s .3s ease both;
+}
+
+nav.links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--ink);
+  background: #c8e4f2;
+  transition: border-color .2s, box-shadow .2s, transform .15s;
+}
+
+nav.links a:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(26,111,168,.12);
+  transform: translateY(-2px);
+}
+
+nav.links a .link-title {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+nav.links a .link-desc {
+  font-size: .88rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+nav.links a .arrow {
+  font-size: 1.2rem;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-left: 16px;
+  transition: transform .2s;
+}
+
+nav.links a:hover .arrow { transform: translateX(4px); }
+
+.references {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+
+.references p.ref-label {
+  font-size: .85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.references ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.references ul li a {
+  font-size: .95rem;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s;
+}
+
+.references ul li a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.references ul li::before {
+  content: "↗ ";
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Quick Access Images</h1>
+    <p class="subtitle">Reminder: Just Notes for Myself</p>
+  </header>
+
+  <div class="rule"><hr /></div>
+
+  <section class="intro">
+    <p>What System/Process are You Looking For?</p>
+
+  </section>
+
+  <nav class="links">
+
+
+<a href="https://poolas10.github.io/colon">
+  <div>
+    <div class="link-title">Colon</div>
+    <div class="link-desc">All things Colon outside of IBD</div>
+  </div>
+  <span class="arrow">→</span>
+</a>
+
+<a href="https://poolas10.github.io/gastric">
+  <div>
+    <div class="link-title">Stomach</div>
+    <div class="link-desc">Feel that Burn</div>
+  </div>
+  <span class="arrow">→</span>
+</a>
+
+<a href="https://poolas10.github.io/pancreas">
+  <div>
+    <div class="link-title">Pancreas</div>
+    <div class="link-desc">My number one love</div>
+  </div>
+  <span class="arrow">→</span>
+</a>
+
+  </nav>
+
+ <div class="rule"><hr /></div>
+
+  <section class="rule">
+    <p>You think you had enough and want to go back to the beginning?</p>
+
+<div class="references">
+  <p class="ref-label">References &amp; Sources</p>
+  <ul>
+    <li><a href="https://poolas10.github.io" target="_blank">Take me Back</a></li>
+  </ul>
+</div>
+
+
+</body>
+</html>
