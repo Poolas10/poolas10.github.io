@@ -1,4 +1,4 @@
-## Quick Access Figures:
+## Colon:
 <img src="https://raw.githubusercontent.com/Poolas10/poolas10.github.io/main/Images/Surveillance Image.jpg" alt="Colon">
 - [Image Source - 2020  US Multi-Society Task Force on Colorectal Cancer](https://www.gastrojournal.org/article/S0016-5085%2819%2941479-0/fulltext)
 
