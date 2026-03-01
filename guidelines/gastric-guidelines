@@ -1,8 +1,174 @@
----
-layout: default
-title: Gastric Guidelines
----
+<!DOCTYPE html>
 
-## Gastric Guidelines
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gastric Guidelines</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-- [ACG Clinical Guideline: Treatment of Helicobacter pylori Infection](https://journals.lww.com/ajg/pages/articleviewer.aspx?year=2024&issue=09000&article=00013&type=Fulltext)
+:root {
+  --cream: #ddeef7;
+  --ink: #12202e;
+  --muted: #3a5a72;
+  --accent: #1a6fa8;
+  --rule: #a8cfe0;
+  --card-bg: #c8e4f2;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  max-width: 720px;
+  padding: 60px 24px 0;
+  text-align: center;
+  animation: fadeUp .7s ease both;
+}
+
+header h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+header p.subtitle {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: var(--muted);
+  font-style: italic;
+  font-family: 'Lora', serif;
+}
+
+.rule {
+  width: 100%;
+  max-width: 720px;
+  padding: 0 24px;
+  margin: 32px 0;
+  animation: fadeUp .7s .1s ease both;
+}
+
+.rule hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+}
+
+.back-link {
+  width: 100%;
+  max-width: 720px;
+  padding: 0 24px;
+  margin-bottom: 24px;
+  animation: fadeUp .7s .1s ease both;
+}
+
+.back-link a {
+  font-size: .9rem;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s;
+}
+
+.back-link a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.content {
+  width: 100%;
+  max-width: 720px;
+  padding: 0 24px 80px;
+  animation: fadeUp .7s .2s ease both;
+}
+
+.content h2 {
+  font-family: 'Lora', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+
+.link-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link-list li {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 16px 20px;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.link-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(26,111,168,.12);
+}
+
+.link-list li a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s;
+}
+
+.link-list li a:hover {
+  border-bottom-color: var(--accent);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Gastric Guidelines</h1>
+    <p class="subtitle">Quick access references</p>
+  </header>
+
+  <div class="rule"><hr /></div>
+
+  <div class="back-link">
+    <a href="https://poolas10.github.io/quick-guidelines.html">← Back to Guidelines</a>
+  </div>
+
+  <div class="content">
+    <h2>Gastric Guidelines</h2>
+
+<ul class="link-list">
+
+  <li>
+    <a href="https://journals.lww.com/ajg/pages/articleviewer.aspx?year=2024&issue=09000&article=00013&type=Fulltext" target="_blank">
+      ACG Clinical Guideline: Treatment of Helicobacter pylori Infection
+    </a>
+  </li>
+
+
+</ul>
+
+  </div>
+
+</body>
+</html>
