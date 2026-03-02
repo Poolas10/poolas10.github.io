@@ -1,511 +1,398 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Page</title>
+  <title>Quick Access Calculators</title>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
-:root {
-  --cream: #ddeef7;
-  --ink: #12202e;
-  --muted: #3a5a72;
-  --accent: #1a6fa8;
-  --rule: #a8cfe0;
-}
 
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: 'Source Sans 3', sans-serif;
-  font-weight: 300;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    :root {
+      --cream: #ddeef7;
+      --ink: #12202e;
+      --muted: #3a5a72;
+      --accent: #1a6fa8;
+      --rule: #a8cfe0;
+      --card-bg: #c8e4f2;
+      --green: #1a7a4a;
+      --green-bg: #d4f0e2;
+      --yellow: #7a5c1a;
+      --yellow-bg: #fdf0d0;
+      --red: #7a1a1a;
+      --red-bg: #f5d4d4;
+    }
 
-header {
-  width: 100%;
-  max-width: 720px;
-  padding: 60px 24px 0;
-  text-align: center;
-  animation: fadeUp .7s ease both;
-}
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-header h1 {
-  font-family: 'Lora', serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  line-height: 1.15;
-}
+    header {
+      width: 100%;
+      max-width: 720px;
+      padding: 60px 24px 0;
+      text-align: center;
+      animation: fadeUp .7s ease both;
+    }
 
-header p.subtitle {
-  margin-top: 10px;
-  font-size: 1rem;
-  color: var(--muted);
-  font-style: italic;
-  font-family: 'Lora', serif;
-}
+    header h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
 
-.rule {
-  width: 100%;
-  max-width: 720px;
-  padding: 0 24px;
-  margin: 32px 0;
-  animation: fadeUp .7s .1s ease both;
-}
+    header p.subtitle {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: var(--muted);
+      font-style: italic;
+      font-family: 'Lora', serif;
+    }
 
-.rule hr {
-  border: none;
-  border-top: 1px solid var(--rule);
-}
+    .rule {
+      width: 100%;
+      max-width: 720px;
+      padding: 0 24px;
+      margin: 32px 0;
+      animation: fadeUp .7s .1s ease both;
+    }
 
-.intro {
-  width: 100%;
-  max-width: 720px;
-  padding: 0 24px;
-  animation: fadeUp .7s .2s ease both;
-}
+    .rule hr { border: none; border-top: 1px solid var(--rule); }
 
-.intro p {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: var(--ink);
-}
+    .back-link {
+      width: 100%;
+      max-width: 720px;
+      padding: 0 24px;
+      margin-bottom: 24px;
+      animation: fadeUp .7s .1s ease both;
+    }
 
-nav.links {
-  width: 100%;
-  max-width: 720px;
-  padding: 40px 24px 80px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  animation: fadeUp .7s .3s ease both;
-}
+    .back-link a {
+      font-size: .9rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .15s;
+    }
 
-nav.links a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  text-decoration: none;
-  color: var(--ink);
-  background: #c8e4f2;
-  transition: border-color .2s, box-shadow .2s, transform .15s;
-}
+    .back-link a:hover { border-bottom-color: var(--accent); }
 
-nav.links a:hover {
-  border-color: var(--accent);
-  box-shadow: 0 4px 16px rgba(26,111,168,.12);
-  transform: translateY(-2px);
-}
+    /* ── Accordion ── */
+    .calculators {
+      width: 100%;
+      max-width: 720px;
+      padding: 0 24px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeUp .7s .2s ease both;
+    }
 
-nav.links a .link-title {
-  font-family: 'Lora', serif;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
+    .accordion {
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      overflow: hidden;
+    }
 
-nav.links a .link-desc {
-  font-size: .88rem;
-  color: var(--muted);
-  margin-top: 3px;
-}
+    .accordion-header {
+      width: 100%;
+      background: var(--card-bg);
+      border: none;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      transition: background .2s;
+    }
 
-nav.links a .arrow {
-  font-size: 1.2rem;
-  color: var(--accent);
-  flex-shrink: 0;
-  margin-left: 16px;
-  transition: transform .2s;
-}
+    .accordion-header:hover { background: #b8d8ea; }
 
-nav.links a:hover .arrow { transform: translateX(4px); }
+    .accordion-header .acc-title {
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
 
-.references {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid var(--rule);
-}
+    .accordion-header .acc-subtitle {
+      font-size: .85rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
 
-.references p.ref-label {
-  font-size: .85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
+    .accordion-header .chevron {
+      font-size: 1.2rem;
+      color: var(--accent);
+      transition: transform .3s;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
 
-.references ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+    .accordion-header.open .chevron { transform: rotate(180deg); }
 
-.references ul li a {
-  font-size: .95rem;
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color .15s;
-}
+    .accordion-body {
+      display: none;
+      padding: 24px;
+      background: #fff;
+      border-top: 1px solid var(--rule);
+    }
 
-.references ul li a:hover {
-  border-bottom-color: var(--accent);
-}
+    .accordion-body.open { display: block; }
 
-.references ul li::before {
-  content: "↗ ";
-  font-size: .8rem;
-  color: var(--muted);
-}
+    /* ── Calculator inputs ── */
+    .calc-input-group {
+      margin-bottom: 16px;
+    }
 
-.input-group {
-  margin-bottom: 20px;
-}
+    .calc-input-group label {
+      display: block;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 4px;
+    }
 
-.input-group label {
-  display: block;
-  font-size: .9rem;
-  font-weight: 600;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  margin-bottom: 6px;
-}
+    .calc-input-group .hint {
+      font-size: .78rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 4px;
+    }
 
-.input-group .hint {
-  font-size: .8rem;
-  color: var(--muted);
-  margin-bottom: 6px;
-  font-style: italic;
-}
+    .calc-input-group input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: .95rem;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
 
-.input-group input {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  background: #fff;
-  color: var(--ink);
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 1rem;
-  font-weight: 300;
-  transition: border-color .2s, box-shadow .2s;
-  outline: none;
-}
+    .calc-input-group input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(26,111,168,.1);
+    }
 
-.input-group input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(26,111,168,.1);
-}
+    .calc-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background .2s, transform .15s;
+    }
 
-.calculate-btn {
-  width: 100%;
-  padding: 14px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-family: 'Lora', serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 8px;
-  transition: background .2s, transform .15s;
-}
+    .calc-btn:hover {
+      background: #155d8e;
+      transform: translateY(-1px);
+    }
 
-.calculate-btn:hover {
-  background: #155d8e;
-  transform: translateY(-1px);
-}
+    .calc-result {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+    }
 
-.result {
-  margin-top: 28px;
-  padding: 24px;
-  border-radius: 6px;
-  border: 1px solid var(--rule);
-  display: none;
-}
+    .calc-result .result-label {
+      font-size: .8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
 
-.result.show { display: block; }
+    .calc-result .result-score {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
 
-.result .score-label {
-  font-size: .85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
+    .calc-result .result-interp {
+      font-size: .95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
 
-.result .score-value {
-  font-family: 'Lora', serif;
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
+    .calc-result .result-detail {
+      font-size: .88rem;
+      line-height: 1.6;
+    }
 
-.result .interpretation {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
+    .formula-note {
+      margin-top: 20px;
+      padding: 14px 16px;
+      background: var(--cream);
+      border-radius: 4px;
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
 
-.result .interpretation-detail {
-  font-size: .9rem;
-  line-height: 1.6;
-  color: var(--ink);
-}
+    .formula-note strong { color: var(--ink); }
 
-.result.low {
-  background: var(--green-bg);
-  border-color: #a8d8bc;
-}
+    .formula-note a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .15s;
+    }
 
-.result.low .score-value,
-.result.low .interpretation { color: var(--green); }
+    .formula-note a:hover { border-bottom-color: var(--accent); }
 
-.result.indeterminate {
-  background: var(--yellow-bg);
-  border-color: #e8d4a0;
-}
-
-.result.indeterminate .score-value,
-.result.indeterminate .interpretation { color: var(--yellow); }
-
-.result.high {
-  background: var(--red-bg);
-  border-color: #d4a8a8;
-}
-
-.result.high .score-value,
-.result.high .interpretation { color: var(--red); }
-
-.formula-box {
-  margin-top: 32px;
-  padding: 20px;
-  background: var(--card-bg);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-}
-
-.formula-box p.formula-label {
-  font-size: .8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-
-.formula-box p.formula {
-  font-family: 'Lora', serif;
-  font-size: 1rem;
-  color: var(--ink);
-  line-height: 1.6;
-}
-
-.reference-box {
-  margin-top: 16px;
-  font-size: .8rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.reference-box a {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color .15s;
-}
-
-.reference-box a:hover { border-bottom-color: var(--accent); }
-
-.error {
-  color: #7a1a1a;
-  font-size: .85rem;
-  margin-top: 6px;
-  display: none;
-}
-
-
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
 
   <header>
     <h1>Quick Access Calculators</h1>
-    <p class="subtitle">Reminder: Just Notes for Myself</p>
+    <p class="subtitle">Just Notes for Myself</p>
   </header>
 
   <div class="rule"><hr /></div>
 
-  <section class="intro">
-    <p>What System/Process are You Looking For?</p>
+  <div class="back-link">
+    <a href="https://poolas10.github.io">← Back to Home</a>
+  </div>
 
-  </section>
+  <div class="calculators">
 
-  <nav class="links">
+    <!-- ── FIB-4 CALCULATOR ── -->
+    <div class="accordion">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <div>
+          <div class="acc-title">FIB-4 Calculator</div>
+          <div class="acc-subtitle">Liver Fibrosis Index</div>
+        </div>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="accordion-body">
 
-<!-- Add more cards below by copying the block above -->
+        <div class="calc-input-group">
+          <label>Age</label>
+          <div class="hint">years</div>
+          <input type="number" id="fib4-age" placeholder="e.g. 55" min="1" />
+        </div>
+        <div class="calc-input-group">
+          <label>AST</label>
+          <div class="hint">U/L</div>
+          <input type="number" id="fib4-ast" placeholder="e.g. 40" min="1" />
+        </div>
+        <div class="calc-input-group">
+          <label>ALT</label>
+          <div class="hint">U/L</div>
+          <input type="number" id="fib4-alt" placeholder="e.g. 35" min="1" />
+        </div>
+        <div class="calc-input-group">
+          <label>Platelet Count</label>
+          <div class="hint">10⁹/L — enter 150 for 150,000/µL</div>
+          <input type="number" id="fib4-plt" placeholder="e.g. 150" min="1" />
+        </div>
 
+        <button class="calc-btn" onclick="calcFib4()">Calculate FIB-4</button>
 
-  <div class="rule"><hr /></div>
+        <div class="calc-result" id="fib4-result">
+          <div class="result-label">FIB-4 Score</div>
+          <div class="result-score" id="fib4-score"></div>
+          <div class="result-interp" id="fib4-interp"></div>
+          <div class="result-detail" id="fib4-detail"></div>
+        </div>
 
-  <div class="content">
-    <h2>FIB-4 Calculator</h2>
+        <div class="formula-note">
+          <strong>Formula:</strong> FIB-4 = (Age × AST) ÷ (Platelets × √ALT)<br><br>
+          <strong>Cutoffs:</strong> &lt;1.30 Low risk · 1.30–2.67 Indeterminate · &gt;2.67 High risk<br><br>
+          Reference: <a href="https://www.aasld.org/practice-guidelines" target="_blank">AASLD Guidelines</a>
+        </div>
 
-    <div class="input-group" style="margin-bottom:20px;">
-      <label style="display:block;font-size:.9rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Age (years)</label>
-      <input type="number" id="age" placeholder="e.g. 55" style="width:100%;padding:12px 16px;border:1px solid var(--rule);border-radius:4px;background:#fff;color:var(--ink);font-size:1rem;outline:none;" />
+      </div>
     </div>
 
-    <div class="input-group" style="margin-bottom:20px;">
-      <label style="display:block;font-size:.9rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">AST (U/L)</label>
-      <input type="number" id="ast" placeholder="e.g. 40" style="width:100%;padding:12px 16px;border:1px solid var(--rule);border-radius:4px;background:#fff;color:var(--ink);font-size:1rem;outline:none;" />
-    </div>
-
-    <div class="input-group" style="margin-bottom:20px;">
-      <label style="display:block;font-size:.9rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">ALT (U/L)</label>
-      <input type="number" id="alt" placeholder="e.g. 35" style="width:100%;padding:12px 16px;border:1px solid var(--rule);border-radius:4px;background:#fff;color:var(--ink);font-size:1rem;outline:none;" />
-    </div>
-
-    <div class="input-group" style="margin-bottom:20px;">
-      <label style="display:block;font-size:.9rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Platelets (10⁹/L)</label>
-      <input type="number" id="platelets" placeholder="e.g. 150" style="width:100%;padding:12px 16px;border:1px solid var(--rule);border-radius:4px;background:#fff;color:var(--ink);font-size:1rem;outline:none;" />
-    </div>
-
-    <button onclick="calculate()" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:4px;font-family:'Lora',serif;font-size:1.1rem;font-weight:600;cursor:pointer;">Calculate FIB-4</button>
-
-    <div id="result" style="display:none;margin-top:28px;padding:24px;border-radius:6px;border:1px solid var(--rule);">
-      <div style="font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px;">FIB-4 Score</div>
-      <div id="score-value" style="font-family:'Lora',serif;font-size:2.5rem;font-weight:600;margin-bottom:12px;"></div>
-      <div id="interpretation" style="font-size:1rem;font-weight:600;margin-bottom:8px;"></div>
-      <div id="interpretation-detail" style="font-size:.9rem;line-height:1.6;"></div>
-    </div>
+    <!-- ── ADD MORE CALCULATORS BELOW BY COPYING THE ACCORDION BLOCK ABOVE ── -->
 
   </div>
 
   <script>
-    function calculate() {
-      const age = parseFloat(document.getElementById('age').value);
-      const ast = parseFloat(document.getElementById('ast').value);
-      const alt = parseFloat(document.getElementById('alt').value);
-      const platelets = parseFloat(document.getElementById('platelets').value);
-      if (!age || !ast || !alt || !platelets) return;
-      const fib4 = (age * ast) / (platelets * Math.sqrt(alt));
+    function toggleAccordion(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.accordion-header').forEach(b => b.classList.remove('open'));
+      // Open clicked if it was closed
+      if (!isOpen) {
+        body.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+
+    function calcFib4() {
+      const age = parseFloat(document.getElementById('fib4-age').value);
+      const ast = parseFloat(document.getElementById('fib4-ast').value);
+      const alt = parseFloat(document.getElementById('fib4-alt').value);
+      const plt = parseFloat(document.getElementById('fib4-plt').value);
+      if (!age || !ast || !alt || !plt) return;
+
+      const fib4 = (age * ast) / (plt * Math.sqrt(alt));
       const score = fib4.toFixed(2);
-      const resultEl = document.getElementById('result');
-      document.getElementById('score-value').textContent = score;
+
+      const resultEl = document.getElementById('fib4-result');
+      document.getElementById('fib4-score').textContent = score;
       resultEl.style.display = 'block';
+
       if (fib4 < 1.30) {
         resultEl.style.background = '#d4f0e2';
-        document.getElementById('interpretation').textContent = 'Low Risk';
-        document.getElementById('interpretation').style.color = '#1a7a4a';
-        document.getElementById('score-value').style.color = '#1a7a4a';
-        document.getElementById('interpretation-detail').textContent = 'FIB-4 < 1.30 suggests low risk of advanced fibrosis (F0-F1).';
+        resultEl.style.borderColor = '#a8d8bc';
+        document.getElementById('fib4-score').style.color = '#1a7a4a';
+        document.getElementById('fib4-interp').style.color = '#1a7a4a';
+        document.getElementById('fib4-interp').textContent = 'Low Risk';
+        document.getElementById('fib4-detail').textContent = 'FIB-4 < 1.30 suggests low risk of advanced fibrosis (F0–F1). Routine follow-up is generally appropriate.';
       } else if (fib4 <= 2.67) {
         resultEl.style.background = '#fdf0d0';
-        document.getElementById('interpretation').textContent = 'Indeterminate';
-        document.getElementById('interpretation').style.color = '#7a5c1a';
-        document.getElementById('score-value').style.color = '#7a5c1a';
-        document.getElementById('interpretation-detail').textContent = 'FIB-4 between 1.30 and 2.67 is indeterminate. Consider additional evaluation.';
+        resultEl.style.borderColor = '#e8d4a0';
+        document.getElementById('fib4-score').style.color = '#7a5c1a';
+        document.getElementById('fib4-interp').style.color = '#7a5c1a';
+        document.getElementById('fib4-interp').textContent = 'Indeterminate';
+        document.getElementById('fib4-detail').textContent = 'FIB-4 between 1.30 and 2.67 is indeterminate. Consider additional evaluation such as elastography or liver biopsy.';
       } else {
         resultEl.style.background = '#f5d4d4';
-        document.getElementById('interpretation').textContent = 'High Risk';
-        document.getElementById('interpretation').style.color = '#7a1a1a';
-        document.getElementById('score-value').style.color = '#7a1a1a';
-        document.getElementById('interpretation-detail').textContent = 'FIB-4 > 2.67 suggests high risk of advanced fibrosis (F3-F4). Referral recommended.';
+        resultEl.style.borderColor = '#d4a8a8';
+        document.getElementById('fib4-score').style.color = '#7a1a1a';
+        document.getElementById('fib4-interp').style.color = '#7a1a1a';
+        document.getElementById('fib4-interp').textContent = 'High Risk';
+        document.getElementById('fib4-detail').textContent = 'FIB-4 > 2.67 suggests high risk of advanced fibrosis (F3–F4). Referral to hepatology and further evaluation is recommended.';
       }
     }
   </script>
-
-
-<!-- Add more cards below by copying the block above -->
-<div class="input-group">
-  <label>Age</label>
-  <div class="hint">years</div>
-  <input type="number" id="age" placeholder="e.g. 55" min="1" max="120" />
-  <div class="error" id="age-error">Please enter a valid age.</div>
-</div>
-
-<div class="input-group">
-  <label>AST</label>
-  <div class="hint">U/L (Aspartate Aminotransferase)</div>
-  <input type="number" id="ast" placeholder="e.g. 40" min="1" />
-  <div class="error" id="ast-error">Please enter a valid AST value.</div>
-</div>
-
-<div class="input-group">
-  <label>ALT</label>
-  <div class="hint">U/L (Alanine Aminotransferase)</div>
-  <input type="number" id="alt" placeholder="e.g. 35" min="1" />
-  <div class="error" id="alt-error">Please enter a valid ALT value.</div>
-</div>
-
-<div class="input-group">
-  <label>Platelet Count</label>
-  <div class="hint">10⁹/L (e.g. enter 150 for 150,000/µL)</div>
-  <input type="number" id="platelets" placeholder="e.g. 150" min="1" />
-  <div class="error" id="platelets-error">Please enter a valid platelet count.</div>
-</div>
-
-<button class="calculate-btn" onclick="calculate()">Calculate FIB-4</button>
-
-<div class="result" id="result">
-  <div class="score-label">FIB-4 Score</div>
-  <div class="score-value" id="score-value"></div>
-  <div class="interpretation" id="interpretation"></div>
-  <div class="interpretation-detail" id="interpretation-detail"></div>
-</div>
-
-<div class="formula-box">
-  <p class="formula-label">Formula</p>
-  <p class="formula">FIB-4 = (Age × AST) ÷ (Platelets × √ALT)</p>
-</div>
-
-<div class="reference-box">
-  <strong>Interpretation cutoffs (general population / NAFLD):</strong><br>
-  &lt; 1.30 — Low risk of advanced fibrosis (F0–F1)<br>
-  1.30 – 2.67 — Indeterminate, further evaluation recommended<br>
-  &gt; 2.67 — High risk of advanced fibrosis (F3–F4)<br><br>
-  Reference: <a href="https://www.hepatology.org" target="_blank">Sterling et al. Hepatology 2006</a> |
-  <a href="https://www.aasld.org/practice-guidelines" target="_blank">AASLD Guidelines</a>
-</div>
-
-
-<!-- Add more cards below by copying the block above -->
-
-  </nav>
-
- <div class="rule"><hr /></div>
-
-  <section class="rule">
-    <p>You think you had enough and want to go back to the beginning?</p>
-
-<div class="references">
-  <p class="ref-label">References &amp; Sources</p>
-  <ul>
-    <li><a href="https://poolas10.github.io" target="_blank">These were not the droids I was looking for - that is take me Back</a></li>
-  </ul>
-</div>
-
 
 </body>
 </html>
