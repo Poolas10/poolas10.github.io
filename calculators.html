@@ -169,106 +169,6 @@ nav.links a:hover .arrow { transform: translateX(4px); }
   color: var(--muted);
 }
 
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FIB-4 Calculator</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-```
-:root {
-  --cream: #ddeef7;
-  --ink: #12202e;
-  --muted: #3a5a72;
-  --accent: #1a6fa8;
-  --rule: #a8cfe0;
-  --card-bg: #c8e4f2;
-  --green: #1a7a4a;
-  --green-bg: #d4f0e2;
-  --yellow: #7a5c1a;
-  --yellow-bg: #fdf0d0;
-  --red: #7a1a1a;
-  --red-bg: #f5d4d4;
-}
-
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: 'Source Sans 3', sans-serif;
-  font-weight: 300;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-header {
-  width: 100%;
-  max-width: 620px;
-  padding: 60px 24px 0;
-  text-align: center;
-  animation: fadeUp .7s ease both;
-}
-
-header h1 {
-  font-family: 'Lora', serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  line-height: 1.15;
-}
-
-header p.subtitle {
-  margin-top: 10px;
-  font-size: 1rem;
-  color: var(--muted);
-  font-style: italic;
-  font-family: 'Lora', serif;
-}
-
-.rule {
-  width: 100%;
-  max-width: 620px;
-  padding: 0 24px;
-  margin: 32px 0;
-  animation: fadeUp .7s .1s ease both;
-}
-
-.rule hr {
-  border: none;
-  border-top: 1px solid var(--rule);
-}
-
-.back-link {
-  width: 100%;
-  max-width: 620px;
-  padding: 0 24px;
-  margin-bottom: 24px;
-  animation: fadeUp .7s .1s ease both;
-}
-
-.back-link a {
-  font-size: .9rem;
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color .15s;
-}
-
-.back-link a:hover { border-bottom-color: var(--accent); }
-
-.card {
-  width: 100%;
-  max-width: 620px;
-  padding: 0 24px 40px;
-  animation: fadeUp .7s .2s ease both;
-}
-
 .input-group {
   margin-bottom: 20px;
 }
@@ -438,150 +338,6 @@ header p.subtitle {
   display: none;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-```
-
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>FIB-4 Calculator</h1>
-    <p class="subtitle">Liver Fibrosis Index</p>
-  </header>
-
-  <div class="rule"><hr /></div>
-
-  <div class="back-link">
-    <a href="https://poolas10.github.io">← Back to Home</a>
-  </div>
-
-  <div class="card">
-
-```
-<div class="input-group">
-  <label>Age</label>
-  <div class="hint">years</div>
-  <input type="number" id="age" placeholder="e.g. 55" min="1" max="120" />
-  <div class="error" id="age-error">Please enter a valid age.</div>
-</div>
-
-<div class="input-group">
-  <label>AST</label>
-  <div class="hint">U/L (Aspartate Aminotransferase)</div>
-  <input type="number" id="ast" placeholder="e.g. 40" min="1" />
-  <div class="error" id="ast-error">Please enter a valid AST value.</div>
-</div>
-
-<div class="input-group">
-  <label>ALT</label>
-  <div class="hint">U/L (Alanine Aminotransferase)</div>
-  <input type="number" id="alt" placeholder="e.g. 35" min="1" />
-  <div class="error" id="alt-error">Please enter a valid ALT value.</div>
-</div>
-
-<div class="input-group">
-  <label>Platelet Count</label>
-  <div class="hint">10⁹/L (e.g. enter 150 for 150,000/µL)</div>
-  <input type="number" id="platelets" placeholder="e.g. 150" min="1" />
-  <div class="error" id="platelets-error">Please enter a valid platelet count.</div>
-</div>
-
-<button class="calculate-btn" onclick="calculate()">Calculate FIB-4</button>
-
-<div class="result" id="result">
-  <div class="score-label">FIB-4 Score</div>
-  <div class="score-value" id="score-value"></div>
-  <div class="interpretation" id="interpretation"></div>
-  <div class="interpretation-detail" id="interpretation-detail"></div>
-</div>
-
-<div class="formula-box">
-  <p class="formula-label">Formula</p>
-  <p class="formula">FIB-4 = (Age × AST) ÷ (Platelets × √ALT)</p>
-</div>
-
-<div class="reference-box">
-  <strong>Interpretation cutoffs (general population / NAFLD):</strong><br>
-  &lt; 1.30 — Low risk of advanced fibrosis (F0–F1)<br>
-  1.30 – 2.67 — Indeterminate, further evaluation recommended<br>
-  &gt; 2.67 — High risk of advanced fibrosis (F3–F4)<br><br>
-  Reference: <a href="https://www.hepatology.org" target="_blank">Sterling et al. Hepatology 2006</a> |
-  <a href="https://www.aasld.org/practice-guidelines" target="_blank">AASLD Guidelines</a>
-</div>
-```
-
-  </div>
-
-  <script>
-    function calculate() {
-      const age = parseFloat(document.getElementById('age').value);
-      const ast = parseFloat(document.getElementById('ast').value);
-      const alt = parseFloat(document.getElementById('alt').value);
-      const platelets = parseFloat(document.getElementById('platelets').value);
-
-      // Clear previous errors
-      document.querySelectorAll('.error').forEach(e => e.style.display = 'none');
-
-      let valid = true;
-      if (!age || age <= 0) {
-        document.getElementById('age-error').style.display = 'block';
-        valid = false;
-      }
-      if (!ast || ast <= 0) {
-        document.getElementById('ast-error').style.display = 'block';
-        valid = false;
-      }
-      if (!alt || alt <= 0) {
-        document.getElementById('alt-error').style.display = 'block';
-        valid = false;
-      }
-      if (!platelets || platelets <= 0) {
-        document.getElementById('platelets-error').style.display = 'block';
-        valid = false;
-      }
-
-      if (!valid) return;
-
-      const fib4 = (age * ast) / (platelets * Math.sqrt(alt));
-      const score = fib4.toFixed(2);
-
-      const resultEl = document.getElementById('result');
-      const scoreEl = document.getElementById('score-value');
-      const interpEl = document.getElementById('interpretation');
-      const detailEl = document.getElementById('interpretation-detail');
-
-      scoreEl.textContent = score;
-      resultEl.classList.remove('low', 'indeterminate', 'high');
-      resultEl.classList.add('show');
-
-      if (fib4 < 1.30) {
-        resultEl.classList.add('low');
-        interpEl.textContent = 'Low Risk';
-        detailEl.textContent = 'FIB-4 < 1.30 suggests low risk of advanced fibrosis (F0–F1). Routine follow-up is generally appropriate.';
-      } else if (fib4 <= 2.67) {
-        resultEl.classList.add('indeterminate');
-        interpEl.textContent = 'Indeterminate';
-        detailEl.textContent = 'FIB-4 between 1.30 and 2.67 is indeterminate. Consider additional evaluation such as elastography or liver biopsy depending on clinical context.';
-      } else {
-        resultEl.classList.add('high');
-        interpEl.textContent = 'High Risk';
-        detailEl.textContent = 'FIB-4 > 2.67 suggests high risk of advanced fibrosis (F3–F4). Referral to hepatology and further evaluation is recommended.';
-      }
-    }
-
-    // Allow Enter key to trigger calculation
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') calculate();
-    });
-  </script>
-
-</body>
-</html>
-
 
 
 @keyframes fadeUp {
@@ -609,13 +365,6 @@ header p.subtitle {
 
 <!-- Add more cards below by copying the block above -->
 
-<a href="https://poolas10.github.io/link-image/colon.html">
-  <div>
-    <div class="link-title">Colon</div>
-    <div class="link-desc">All things Colon outside of IBD</div>
-  </div>
-  <span class="arrow">→</span>
-</a>
 
   <div class="rule"><hr /></div>
 
@@ -686,6 +435,59 @@ header p.subtitle {
       }
     }
   </script>
+
+
+<!-- Add more cards below by copying the block above -->
+<div class="input-group">
+  <label>Age</label>
+  <div class="hint">years</div>
+  <input type="number" id="age" placeholder="e.g. 55" min="1" max="120" />
+  <div class="error" id="age-error">Please enter a valid age.</div>
+</div>
+
+<div class="input-group">
+  <label>AST</label>
+  <div class="hint">U/L (Aspartate Aminotransferase)</div>
+  <input type="number" id="ast" placeholder="e.g. 40" min="1" />
+  <div class="error" id="ast-error">Please enter a valid AST value.</div>
+</div>
+
+<div class="input-group">
+  <label>ALT</label>
+  <div class="hint">U/L (Alanine Aminotransferase)</div>
+  <input type="number" id="alt" placeholder="e.g. 35" min="1" />
+  <div class="error" id="alt-error">Please enter a valid ALT value.</div>
+</div>
+
+<div class="input-group">
+  <label>Platelet Count</label>
+  <div class="hint">10⁹/L (e.g. enter 150 for 150,000/µL)</div>
+  <input type="number" id="platelets" placeholder="e.g. 150" min="1" />
+  <div class="error" id="platelets-error">Please enter a valid platelet count.</div>
+</div>
+
+<button class="calculate-btn" onclick="calculate()">Calculate FIB-4</button>
+
+<div class="result" id="result">
+  <div class="score-label">FIB-4 Score</div>
+  <div class="score-value" id="score-value"></div>
+  <div class="interpretation" id="interpretation"></div>
+  <div class="interpretation-detail" id="interpretation-detail"></div>
+</div>
+
+<div class="formula-box">
+  <p class="formula-label">Formula</p>
+  <p class="formula">FIB-4 = (Age × AST) ÷ (Platelets × √ALT)</p>
+</div>
+
+<div class="reference-box">
+  <strong>Interpretation cutoffs (general population / NAFLD):</strong><br>
+  &lt; 1.30 — Low risk of advanced fibrosis (F0–F1)<br>
+  1.30 – 2.67 — Indeterminate, further evaluation recommended<br>
+  &gt; 2.67 — High risk of advanced fibrosis (F3–F4)<br><br>
+  Reference: <a href="https://www.hepatology.org" target="_blank">Sterling et al. Hepatology 2006</a> |
+  <a href="https://www.aasld.org/practice-guidelines" target="_blank">AASLD Guidelines</a>
+</div>
 
 
 <!-- Add more cards below by copying the block above -->
