@@ -147,6 +147,141 @@ header p.subtitle {
   border-bottom-color: var(--accent);
 }
 
+
+    /* ── Accordion sections ── */
+    .sections {
+      width: 100%;
+      max-width: 1100px;
+      padding: 0 24px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeUp .7s .2s ease both;
+    }
+
+    .section {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(26,111,168,.07);
+    }
+
+    .section-header {
+      width: 100%;
+      background: var(--header-bg);
+      color: #fff;
+      border: none;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      transition: background .2s;
+    }
+
+    .section-header:hover { background: #155d8e; }
+
+    .section-header .sec-title {
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .section-header .sec-subtitle {
+      font-size: .82rem;
+      opacity: .8;
+      margin-top: 2px;
+    }
+
+    .section-header .chevron {
+      font-size: 1.2rem;
+      transition: transform .3s;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    .section-header.open .chevron { transform: rotate(180deg); }
+
+    .section-body {
+      display: none;
+      overflow-x: auto;
+    }
+
+    .section-body.open { display: block; }
+
+    /* ── Table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+      background: #fff;
+    }
+
+    thead tr { background: var(--card-bg); }
+
+    thead th {
+      padding: 12px 14px;
+      text-align: left;
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--accent);
+      border-bottom: 2px solid var(--rule);
+      border-right: 1px solid var(--rule);
+    }
+
+    thead th:last-child { border-right: none; }
+
+    tbody tr { border-bottom: 1px solid var(--rule); }
+    tbody tr:nth-child(even) { background: var(--row-alt); }
+    tbody tr:hover { background: #d8edf7; }
+
+    td {
+      padding: 10px 14px;
+      vertical-align: top;
+      line-height: 1.55;
+      border-right: 1px solid var(--rule);
+    }
+
+    td:last-child { border-right: none; }
+
+    td.syndrome {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    td.gene {
+      font-style: italic;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    td ul {
+      list-style: disc;
+      padding-left: 16px;
+    }
+
+    td ul li { margin-bottom: 3px; }
+
+    .source-note {
+      width: 100%;
+      max-width: 1100px;
+      padding: 0 24px 40px;
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .source-note a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .15s;
+    }
+
+    .source-note a:hover { border-bottom-color: var(--accent); }
+    
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -188,10 +323,402 @@ header p.subtitle {
 </div>
 
 
+  <div class="sections">
+
+    <!-- ══ LYNCH SYNDROME ══ -->
+    <div class="section">
+      <button class="section-header" onclick="toggleSection(this)">
+        <div>
+          <div class="sec-title">Lynch Syndrome (LS)</div>
+          <div class="sec-subtitle">MLH1, MSH2, MSH6, PMS2, EPCAM</div>
+        </div>
+        <span class="chevron">&#9662;</span>
+      </button>
+      <div class="section-body">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:10%">Syndrome</th>
+              <th style="width:8%">Genes</th>
+              <th style="width:25%">Colorectal / Lower GI</th>
+              <th style="width:25%">Upper GI / Other GI</th>
+              <th style="width:32%">Extraintestinal / Other</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="syndrome">Lynch Syndrome</td>
+              <td class="gene">MLH1, MSH2, MSH6, PMS2, EPCAM</td>
+              <td>
+                <ul>
+                  <li>Colonoscopy every 1–2 years starting age 20–25</li>
+                  <li>Annual colonoscopy for confirmed mutation carriers</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Baseline EGD with gastric biopsy at age 30–35</li>
+                  <li>Treat H. pylori if found</li>
+                  <li>EGD every 3–5 years if family history of gastric or duodenal cancer</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Endometrial biopsy + transvaginal ultrasound annually starting age 30–35</li>
+                  <li>Consider hysterectomy + BSO at age 40–45 after childbearing complete</li>
+                  <li>No routine urinary tract, pancreas, prostate, or breast surveillance beyond population guidelines unless family history</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ ADENOMATOUS POLYPOSIS ══ -->
+    <div class="section">
+      <button class="section-header" onclick="toggleSection(this)">
+        <div>
+          <div class="sec-title">Adenomatous Polyposis Syndromes</div>
+          <div class="sec-subtitle">FAP, AFAP, MAP — APC, MUTYH</div>
+        </div>
+        <span class="chevron">&#9662;</span>
+      </button>
+      <div class="section-body">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:10%">Syndrome</th>
+              <th style="width:8%">Genes</th>
+              <th style="width:25%">Colorectal / Lower GI</th>
+              <th style="width:25%">Upper GI / Other GI</th>
+              <th style="width:32%">Extraintestinal / Other</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="syndrome">FAP (Classic)</td>
+              <td class="gene">APC</td>
+              <td>
+                <ul>
+                  <li>Annual flexible sigmoidoscopy or colonoscopy starting at puberty</li>
+                  <li>Colectomy when polyp burden warrants</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Upper endoscopy + duodenoscopy starting age 25–30</li>
+                  <li>Interval by Spigelman stage: 0=4 yr; I=2–3 yr; II=1–3 yr; III=6–12 mo; IV=surgical evaluation</li>
+                  <li>Random biopsy of fundic gland polyps; surgery for high-grade dysplasia</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Annual thyroid ultrasound</li>
+                  <li>Biannual AFP + ultrasound for hepatoblastoma until age 7</li>
+                  <li>Desmoid surveillance based on symptoms/family history</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="syndrome">AFAP</td>
+              <td class="gene">APC</td>
+              <td>
+                <ul>
+                  <li>Colonoscopy (not sigmoidoscopy) starting at puberty or age 18–20</li>
+                  <li>Annual surveillance</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Upper endoscopy + duodenoscopy starting age 25–30</li>
+                  <li>Interval per Spigelman stage (same as FAP)</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Annual thyroid ultrasound</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="syndrome">MAP</td>
+              <td class="gene">MUTYH</td>
+              <td>
+                <ul>
+                  <li>Colonoscopy starting at puberty or age 18–25</li>
+                  <li>Annual surveillance</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Upper endoscopy + duodenoscopy starting age 25–30</li>
+                  <li>Interval per Spigelman stage</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Annual thyroid ultrasound</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ HAMARTOMATOUS ══ -->
+    <div class="section">
+      <button class="section-header" onclick="toggleSection(this)">
+        <div>
+          <div class="sec-title">Hamartomatous Polyposis Syndromes</div>
+          <div class="sec-subtitle">PJS, JPS, Cowden — STK11, SMAD4, BMPR1A, PTEN</div>
+        </div>
+        <span class="chevron">&#9662;</span>
+      </button>
+      <div class="section-body">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:10%">Syndrome</th>
+              <th style="width:8%">Genes</th>
+              <th style="width:25%">Colorectal / Lower GI</th>
+              <th style="width:25%">Upper GI / Other GI</th>
+              <th style="width:32%">Extraintestinal / Other</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="syndrome">Peutz-Jeghers (PJS)</td>
+              <td class="gene">STK11</td>
+              <td>
+                <ul>
+                  <li>Colonoscopy every 2–3 years starting age 8</li>
+                  <li>If no polyps at age 8, repeat at 18 then every 3 years</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Upper endoscopy every 2–3 years starting age 8</li>
+                  <li>Small bowel capsule endoscopy or MR enterography every 2–3 years starting age 8</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Annual pancreatic MRI/EUS starting age 30–35</li>
+                  <li>Annual breast MRI + mammography starting age 25</li>
+                  <li>Annual pelvic exam; gynecologic surveillance</li>
+                  <li>Annual testicular exam in males</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="syndrome">Juvenile Polyposis (JPS)</td>
+              <td class="gene">SMAD4, BMPR1A</td>
+              <td>
+                <ul>
+                  <li>Colonoscopy every 1–3 years starting age 15 or at diagnosis</li>
+                  <li>Polypectomy; colectomy if unmanageable</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Upper endoscopy starting at diagnosis</li>
+                  <li>Repeat every 1–3 years</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>SMAD4 carriers: cardiovascular evaluation for HHT</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="syndrome">Cowden Syndrome</td>
+              <td class="gene">PTEN</td>
+              <td>
+                <ul>
+                  <li>Colonoscopy every 1–3 years starting age 35</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Upper endoscopy every 1–3 years</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Annual thyroid ultrasound starting age 18</li>
+                  <li>Annual breast MRI + mammography starting age 30–35</li>
+                  <li>Annual endometrial biopsy or ultrasound starting age 30–35</li>
+                  <li>Renal imaging every 1–2 years starting age 40</li>
+                  <li>Annual skin exam</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ SERRATED POLYPOSIS ══ -->
+    <div class="section">
+      <button class="section-header" onclick="toggleSection(this)">
+        <div>
+          <div class="sec-title">Serrated (Hyperplastic) Polyposis Syndrome</div>
+          <div class="sec-subtitle">SPS — Unknown etiology (consider MUTYH)</div>
+        </div>
+        <span class="chevron">&#9662;</span>
+      </button>
+      <div class="section-body">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:10%">Syndrome</th>
+              <th style="width:8%">Genes</th>
+              <th style="width:25%">Colorectal / Lower GI</th>
+              <th style="width:25%">Upper GI / Other GI</th>
+              <th style="width:32%">Extraintestinal / Other</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="syndrome">Serrated Polyposis Syndrome (SPS)</td>
+              <td class="gene">Unknown; consider MUTYH</td>
+              <td>
+                <ul>
+                  <li>Colonoscopy every 1–3 years with removal of all polyps &gt;5 mm</li>
+                  <li>Surgery if unable to control endoscopically or cancer develops</li>
+                </ul>
+              </td>
+              <td>No routine upper GI surveillance recommended</td>
+              <td>No extracolonic surveillance recommended at this time</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ HEREDITARY PANCREATIC CANCER ══ -->
+    <div class="section">
+      <button class="section-header" onclick="toggleSection(this)">
+        <div>
+          <div class="sec-title">Hereditary Pancreatic Cancer</div>
+          <div class="sec-subtitle">BRCA1/2, CDKN2A, PALB2, ATM, STK11, others</div>
+        </div>
+        <span class="chevron">&#9662;</span>
+      </button>
+      <div class="section-body">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:10%">Syndrome</th>
+              <th style="width:8%">Genes</th>
+              <th style="width:25%">Colorectal / Lower GI</th>
+              <th style="width:25%">Upper GI / Other GI</th>
+              <th style="width:32%">Extraintestinal / Other</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="syndrome">Familial Pancreatic Cancer / High-Risk Syndromes</td>
+              <td class="gene">BRCA1/2, CDKN2A, PALB2, ATM, STK11, others</td>
+              <td>
+                <ul>
+                  <li>Standard CRC screening unless syndrome-specific indications apply</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Pancreatic surveillance (EUS and/or MRI/MRCP) at experienced centers, ideally under research protocol</li>
+                  <li>Indicated for known mutation carriers (PJS, FAMMM, hereditary pancreatitis) or familial kindreds with affected first-degree relative</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>BRCA1/2: Breast and ovarian cancer surveillance per HBOC guidelines</li>
+                  <li>CDKN2A (FAMMM): Annual skin exam by dermatologist</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ HEREDITARY GASTRIC CANCER ══ -->
+    <div class="section">
+      <button class="section-header" onclick="toggleSection(this)">
+        <div>
+          <div class="sec-title">Hereditary Gastric Cancer</div>
+          <div class="sec-subtitle">HDGC — CDH1</div>
+        </div>
+        <span class="chevron">&#9662;</span>
+      </button>
+      <div class="section-body">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:10%">Syndrome</th>
+              <th style="width:8%">Genes</th>
+              <th style="width:25%">Colorectal / Lower GI</th>
+              <th style="width:25%">Upper GI / Other GI</th>
+              <th style="width:32%">Extraintestinal / Other</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="syndrome">Hereditary Diffuse Gastric Cancer (HDGC)</td>
+              <td class="gene">CDH1</td>
+              <td>
+                <ul>
+                  <li>Colonoscopy starting age 40 in families with colon cancer history</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Prophylactic total gastrectomy recommended after age 20 (&gt;80% lifetime risk)</li>
+                  <li>If deferred: annual EGD with Cambridge protocol (minimum 30 random biopsies)</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Annual mammography + breast MRI starting age 35</li>
+                  <li>Clinical breast exam every 6 months</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="source-note">
+    Adapted from Table 10 in: Syngal S, Brand RE, Church JM, Giardiello FM, Hampel HL, Burt RW; American College of Gastroenterology.
+    ACG clinical guideline: genetic testing and management of hereditary gastrointestinal cancer syndromes.
+    <em>Am J Gastroenterol.</em> 2015 Feb;110(2):223-62.
+    <a href="https://journals.lww.com/ajg/fulltext/2015/02000/acg_clinical_guideline__genetic_testing_and.8.aspx" target="_blank">doi: 10.1038/ajg.2014.435</a>.
+    For clinical decisions, always consult the original guideline and current updates.
+  </div>
     
 <!-- Add more image cards below by copying the block above -->
 
   </div>
+
+  <script>
+    function toggleSection(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      document.querySelectorAll('.section-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.section-header').forEach(b => b.classList.remove('open'));
+      if (!isOpen) {
+        body.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+  </script>
 
 </body>
 </html>
