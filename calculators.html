@@ -202,6 +202,77 @@ nav.links a:hover .arrow { transform: translateX(4px); }
   <span class="arrow">→</span>
 </a>
 
+  <div class="rule"><hr /></div>
+
+  <div class="content">
+    <h2>FIB-4 Calculator</h2>
+
+    <div class="input-group" style="margin-bottom:20px;">
+      <label style="display:block;font-size:.9rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Age (years)</label>
+      <input type="number" id="age" placeholder="e.g. 55" style="width:100%;padding:12px 16px;border:1px solid var(--rule);border-radius:4px;background:#fff;color:var(--ink);font-size:1rem;outline:none;" />
+    </div>
+
+    <div class="input-group" style="margin-bottom:20px;">
+      <label style="display:block;font-size:.9rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">AST (U/L)</label>
+      <input type="number" id="ast" placeholder="e.g. 40" style="width:100%;padding:12px 16px;border:1px solid var(--rule);border-radius:4px;background:#fff;color:var(--ink);font-size:1rem;outline:none;" />
+    </div>
+
+    <div class="input-group" style="margin-bottom:20px;">
+      <label style="display:block;font-size:.9rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">ALT (U/L)</label>
+      <input type="number" id="alt" placeholder="e.g. 35" style="width:100%;padding:12px 16px;border:1px solid var(--rule);border-radius:4px;background:#fff;color:var(--ink);font-size:1rem;outline:none;" />
+    </div>
+
+    <div class="input-group" style="margin-bottom:20px;">
+      <label style="display:block;font-size:.9rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Platelets (10⁹/L)</label>
+      <input type="number" id="platelets" placeholder="e.g. 150" style="width:100%;padding:12px 16px;border:1px solid var(--rule);border-radius:4px;background:#fff;color:var(--ink);font-size:1rem;outline:none;" />
+    </div>
+
+    <button onclick="calculate()" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:4px;font-family:'Lora',serif;font-size:1.1rem;font-weight:600;cursor:pointer;">Calculate FIB-4</button>
+
+    <div id="result" style="display:none;margin-top:28px;padding:24px;border-radius:6px;border:1px solid var(--rule);">
+      <div style="font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px;">FIB-4 Score</div>
+      <div id="score-value" style="font-family:'Lora',serif;font-size:2.5rem;font-weight:600;margin-bottom:12px;"></div>
+      <div id="interpretation" style="font-size:1rem;font-weight:600;margin-bottom:8px;"></div>
+      <div id="interpretation-detail" style="font-size:.9rem;line-height:1.6;"></div>
+    </div>
+
+  </div>
+
+  <script>
+    function calculate() {
+      const age = parseFloat(document.getElementById('age').value);
+      const ast = parseFloat(document.getElementById('ast').value);
+      const alt = parseFloat(document.getElementById('alt').value);
+      const platelets = parseFloat(document.getElementById('platelets').value);
+      if (!age || !ast || !alt || !platelets) return;
+      const fib4 = (age * ast) / (platelets * Math.sqrt(alt));
+      const score = fib4.toFixed(2);
+      const resultEl = document.getElementById('result');
+      document.getElementById('score-value').textContent = score;
+      resultEl.style.display = 'block';
+      if (fib4 < 1.30) {
+        resultEl.style.background = '#d4f0e2';
+        document.getElementById('interpretation').textContent = 'Low Risk';
+        document.getElementById('interpretation').style.color = '#1a7a4a';
+        document.getElementById('score-value').style.color = '#1a7a4a';
+        document.getElementById('interpretation-detail').textContent = 'FIB-4 < 1.30 suggests low risk of advanced fibrosis (F0-F1).';
+      } else if (fib4 <= 2.67) {
+        resultEl.style.background = '#fdf0d0';
+        document.getElementById('interpretation').textContent = 'Indeterminate';
+        document.getElementById('interpretation').style.color = '#7a5c1a';
+        document.getElementById('score-value').style.color = '#7a5c1a';
+        document.getElementById('interpretation-detail').textContent = 'FIB-4 between 1.30 and 2.67 is indeterminate. Consider additional evaluation.';
+      } else {
+        resultEl.style.background = '#f5d4d4';
+        document.getElementById('interpretation').textContent = 'High Risk';
+        document.getElementById('interpretation').style.color = '#7a1a1a';
+        document.getElementById('score-value').style.color = '#7a1a1a';
+        document.getElementById('interpretation-detail').textContent = 'FIB-4 > 2.67 suggests high risk of advanced fibrosis (F3-F4). Referral recommended.';
+      }
+    }
+  </script>
+
+
 <!-- Add more cards below by copying the block above -->
 
   </nav>
