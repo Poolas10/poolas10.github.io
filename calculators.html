@@ -368,33 +368,62 @@
       const resultEl = document.getElementById('fib4-result');
       document.getElementById('fib4-score').textContent = score;
       resultEl.style.display = 'block';
+      
+      const elderly = age >= 65;
 
-      if (fib4 < 1.30) {
-        resultEl.style.background = '#d4f0e2';
-        resultEl.style.borderColor = '#a8d8bc';
-        document.getElementById('fib4-score').style.color = '#1a7a4a';
-        document.getElementById('fib4-interp').style.color = '#1a7a4a';
-        document.getElementById('fib4-interp').textContent = 'Low Risk';
-        document.getElementById('fib4-detail').textContent = 'FIB-4 < 1.30 suggests low risk of advanced fibrosis (F0–F1). Routine follow-up is generally appropriate.';
-      } else if (fib4 <= 2.67) {
-        resultEl.style.background = '#fdf0d0';
-        resultEl.style.borderColor = '#e8d4a0';
-        document.getElementById('fib4-score').style.color = '#7a5c1a';
-        document.getElementById('fib4-interp').style.color = '#7a5c1a';
-        document.getElementById('fib4-interp').textContent = 'Indeterminate';
-        document.getElementById('fib4-detail').textContent = 'FIB-4 between 1.30 and 2.67 is indeterminate. Consider additional evaluation such as elastography or liver biopsy.';
+      if (elderly) {
+        if (fib4 < 2.0) {
+          resultEl.style.background = '#d4f0e2';
+          resultEl.style.borderColor = '#a8d8bc';
+          document.getElementById('fib4-score').style.color = '#1a7a4a';
+          document.getElementById('fib4-interp').style.color = '#1a7a4a';
+          document.getElementById('fib4-interp').textContent = 'Low Risk (Age ≥ 65 cutoff)';
+          document.getElementById('fib4-detail').textContent = 'FIB-4 < 2.0 suggests low risk of advanced fibrosis in patients aged ≥ 65. Routine follow-up is generally appropriate.';
+        } else if (fib4 <= 2.67) {
+          resultEl.style.background = '#fdf0d0';
+          resultEl.style.borderColor = '#e8d4a0';
+          document.getElementById('fib4-score').style.color = '#7a5c1a';
+          document.getElementById('fib4-interp').style.color = '#7a5c1a';
+          document.getElementById('fib4-interp').textContent = 'Indeterminate (Age ≥ 65 cutoff)';
+          document.getElementById('fib4-detail').textContent = 'FIB-4 between 2.0 and 2.67 is indeterminate in patients aged ≥ 65. Consider additional evaluation such as elastography or liver biopsy.';
+        } else {
+          resultEl.style.background = '#f5d4d4';
+          resultEl.style.borderColor = '#d4a8a8';
+          document.getElementById('fib4-score').style.color = '#7a1a1a';
+          document.getElementById('fib4-interp').style.color = '#7a1a1a';
+          document.getElementById('fib4-interp').textContent = 'High Risk (Age ≥ 65 cutoff)';
+          document.getElementById('fib4-detail').textContent = 'FIB-4 > 2.67 suggests high risk of advanced fibrosis (F3–F4) in patients aged ≥ 65. Referral to hepatology is recommended.';
+        }
       } else {
-        resultEl.style.background = '#f5d4d4';
-        resultEl.style.borderColor = '#d4a8a8';
-        document.getElementById('fib4-score').style.color = '#7a1a1a';
-        document.getElementById('fib4-interp').style.color = '#7a1a1a';
-        document.getElementById('fib4-interp').textContent = 'High Risk';
-        document.getElementById('fib4-detail').textContent = 'FIB-4 > 2.67 suggests high risk of advanced fibrosis (F3–F4). Referral to hepatology and further evaluation is recommended.';
+        if (fib4 < 1.30) {
+          resultEl.style.background = '#d4f0e2';
+          resultEl.style.borderColor = '#a8d8bc';
+          document.getElementById('fib4-score').style.color = '#1a7a4a';
+          document.getElementById('fib4-interp').style.color = '#1a7a4a';
+          document.getElementById('fib4-interp').textContent = 'Low Risk';
+          document.getElementById('fib4-detail').textContent = 'FIB-4 < 1.30 suggests low risk of advanced fibrosis (F0–F1). Routine follow-up is generally appropriate.';
+        } else if (fib4 <= 2.67) {
+          resultEl.style.background = '#fdf0d0';
+          resultEl.style.borderColor = '#e8d4a0';
+          document.getElementById('fib4-score').style.color = '#7a5c1a';
+          document.getElementById('fib4-interp').style.color = '#7a5c1a';
+          document.getElementById('fib4-interp').textContent = 'Indeterminate';
+          document.getElementById('fib4-detail').textContent = 'FIB-4 between 1.30 and 2.67 is indeterminate. Consider additional evaluation such as elastography or liver biopsy.';
+        } else {
+          resultEl.style.background = '#f5d4d4';
+          resultEl.style.borderColor = '#d4a8a8';
+          document.getElementById('fib4-score').style.color = '#7a1a1a';
+          document.getElementById('fib4-interp').style.color = '#7a1a1a';
+          document.getElementById('fib4-interp').textContent = 'High Risk';
+          document.getElementById('fib4-detail').textContent = 'FIB-4 > 2.67 suggests high risk of advanced fibrosis (F3–F4). Referral to hepatology is recommended.';
+        }
       }
+      
     }
   </script>
 
 </body>
 </html>
+
 
 
