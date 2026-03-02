@@ -11,42 +11,83 @@
       --cream: #ddeef7; --ink: #12202e; --muted: #3a5a72;
       --accent: #1a6fa8; --rule: #a8cfe0; --card-bg: #c8e4f2;
     }
-    body { background: var(--cream); color: var(--ink); font-family: 'Source Sans 3', sans-serif; font-weight: 300; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+    body { 
+      background: var(--cream); 
+      color: var(--ink); 
+      font-family: 'Source Sans 3', sans-serif; 
+      font-weight: 300; min-height: 100vh; 
+      display: flex; flex-direction: column; align-items: center; }
+    
     header { width: 100%; max-width: 720px; padding: 60px 24px 0; text-align: center; animation: fadeUp .7s ease both; }
+    
     header h1 { font-family: 'Lora', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; letter-spacing: -0.5px; line-height: 1.15; }
+    
     header p.subtitle { margin-top: 10px; font-size: 1rem; color: var(--muted); font-style: italic; font-family: 'Lora', serif; }
+    
     .rule { width: 100%; max-width: 720px; padding: 0 24px; margin: 32px 0; }
+    
     .rule hr { border: none; border-top: 1px solid var(--rule); }
+    
     .back-link { width: 100%; max-width: 720px; padding: 0 24px; margin-bottom: 24px; }
+    
     .back-link a { font-size: .9rem; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .15s; }
+    
     .back-link a:hover { border-bottom-color: var(--accent); }
+    
     .calculators { width: 100%; max-width: 720px; padding: 0 24px 80px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp .7s .2s ease both; }
+    
     .accordion { border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+    
     .accordion-header { width: 100%; background: var(--card-bg); border: none; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-align: left; transition: background .2s; }
+    
     .accordion-header:hover { background: #b8d8ea; }
+    
     .acc-title { font-family: 'Lora', serif; font-weight: 600; font-size: 1.1rem; color: var(--ink); }
+    
     .acc-subtitle { font-size: .85rem; color: var(--muted); margin-top: 3px; }
+    
     .chevron { font-size: 1.2rem; color: var(--accent); transition: transform .3s; flex-shrink: 0; margin-left: 16px; }
+    
     .accordion-header.open .chevron { transform: rotate(180deg); }
+    
     .accordion-body { display: none; padding: 24px; background: #fff; border-top: 1px solid var(--rule); }
+    
     .accordion-body.open { display: block; }
+    
     .calc-input-group { margin-bottom: 16px; }
+    
     .calc-input-group label { display: block; font-size: .85rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+    
     .calc-input-group .hint { font-size: .78rem; color: var(--muted); font-style: italic; margin-bottom: 4px; }
+    
     .calc-input-group input, .calc-input-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--rule); border-radius: 4px; background: var(--cream); color: var(--ink); font-family: 'Source Sans 3', sans-serif; font-size: .95rem; outline: none; transition: border-color .2s; }
+    
     .calc-input-group input:focus, .calc-input-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,111,168,.1); }
+    
     .calc-btn { width: 100%; padding: 12px; background: var(--accent); color: #fff; border: none; border-radius: 4px; font-family: 'Lora', serif; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 4px; transition: background .2s, transform .15s; }
+    
     .calc-btn:hover { background: #155d8e; transform: translateY(-1px); }
+    
     .formula-note { margin-top: 20px; padding: 14px 16px; background: var(--cream); border-radius: 4px; font-size: .85rem; color: var(--muted); line-height: 1.8; }
+    
     .formula-note strong { color: var(--ink); }
+    
     .formula-note a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+    
     .formula-note a:hover { border-bottom-color: var(--accent); }
+    
     .score-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    
     .score-box { text-align: center; padding: 16px; background: var(--cream); border-radius: 6px; border: 1px solid var(--rule); }
+    
     .box-label { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 6px; }
+    
     .box-value { font-family: 'Lora', serif; font-size: 2rem; font-weight: 600; color: var(--accent); }
+    
     .mortality-box { font-size: .88rem; line-height: 1.8; color: var(--ink); padding: 14px; background: var(--cream); border-radius: 4px; }
+    
     @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    
   </style>
 </head>
 <body>
@@ -271,3 +312,4 @@
 
 </body>
 </html>
+
