@@ -336,56 +336,6 @@
 
       </div>
     </div>
-
-      <!-- ── FIB-4 CALCULATOR ── -->
-    <div class="accordion">
-      <button class="accordion-header" onclick="toggleAccordion(this)">
-        <div>
-          <div class="acc-title">MELD 3.0 Calculator</div>
-          <div class="acc-subtitle">Cirrhosis Calculator</div>
-        </div>
-        <span class="chevron">▾</span>
-      </button>
-      <div class="accordion-body">
-
-        
-function calcMELD() {
-    let cr   = parseFloat(document.getElementById('meld-cr').value);
-    let bili = parseFloat(document.getElementById('meld-bili').value);
-    let inr  = parseFloat(document.getElementById('meld-inr').value);
-    let na   = parseFloat(document.getElementById('meld-na').value);
-    let alb  = parseFloat(document.getElementById('meld-alb').value);
-    const sex = document.getElementById('meld-sex').value;
-
-    if (!cr || !bili || !inr || !na || !alb) return;
-
-    cr   = Math.min(Math.max(cr, 1.0), 4.0);
-    bili = Math.max(bili, 1.0);
-    inr  = Math.max(inr, 1.0);
-    const naCapped = Math.min(Math.max(na, 125), 137);
-
-    const meld = Math.round(3.78*Math.log(bili) + 11.2*Math.log(inr) + 9.57*Math.log(cr) + 6.43);
-    const meldNa = Math.round(meld + 1.32*(137-naCapped) - (0.033*meld*(137-naCapped)));
-    const femalePts = sex === 'female' ? 1.85 : 0;
-    const meld3 = Math.round(4.56*Math.log(bili) + 0.82*(137-naCapped) - 0.24*(137-naCapped)*Math.log(cr) + 9.09*Math.log(inr) + 11.14*Math.log(cr) + femalePts + 7);
-
-    let mortality = '';
-      if (meld < 10)       mortality = 'MELD < 10: ~2% 90-day mortality';
-      else if (meld <= 19) mortality = 'MELD 10-19: ~6% 90-day mortality';
-      else if (meld <= 29) mortality = 'MELD 20-29: ~20% 90-day mortality';
-      else if (meld <= 39) mortality = 'MELD 30-39: ~53% 90-day mortality';
-      else                 mortality = 'MELD >= 40: ~71% 90-day mortality';
-
-  document.getElementById('meld-score').textContent = meld;
-  document.getElementById('meldna-score').textContent = meldNa;
-  document.getElementById('meld3-score').textContent = meld3;
-  document.getElementById('meld-mortality').textContent = mortality;
-  document.getElementById('meld-result').style.display = 'block';
-  }
-    <!-- ── ADD MORE CALCULATORS BELOW BY COPYING THE ACCORDION BLOCK ABOVE ── -->
-
-  </div>
-
   <script>
     function toggleAccordion(btn) {
       const body = btn.nextElementSibling;
@@ -465,10 +415,61 @@ function calcMELD() {
       }
       
     }
+
+<!-- ── MELD 3.0 Calculator CALCULATOR ── -->
+    <div class="accordion">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <div>
+          <div class="acc-title">MELD 3.0 Calculator</div>
+          <div class="acc-subtitle">Cirrhosis Calculator</div>
+        </div>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="accordion-body">
+
+        
+function calcMELD() {
+    let cr   = parseFloat(document.getElementById('meld-cr').value);
+    let bili = parseFloat(document.getElementById('meld-bili').value);
+    let inr  = parseFloat(document.getElementById('meld-inr').value);
+    let na   = parseFloat(document.getElementById('meld-na').value);
+    let alb  = parseFloat(document.getElementById('meld-alb').value);
+    const sex = document.getElementById('meld-sex').value;
+
+    if (!cr || !bili || !inr || !na || !alb) return;
+
+    cr   = Math.min(Math.max(cr, 1.0), 4.0);
+    bili = Math.max(bili, 1.0);
+    inr  = Math.max(inr, 1.0);
+    const naCapped = Math.min(Math.max(na, 125), 137);
+
+    const meld = Math.round(3.78*Math.log(bili) + 11.2*Math.log(inr) + 9.57*Math.log(cr) + 6.43);
+    const meldNa = Math.round(meld + 1.32*(137-naCapped) - (0.033*meld*(137-naCapped)));
+    const femalePts = sex === 'female' ? 1.85 : 0;
+    const meld3 = Math.round(4.56*Math.log(bili) + 0.82*(137-naCapped) - 0.24*(137-naCapped)*Math.log(cr) + 9.09*Math.log(inr) + 11.14*Math.log(cr) + femalePts + 7);
+
+    let mortality = '';
+      if (meld < 10)       mortality = 'MELD < 10: ~2% 90-day mortality';
+      else if (meld <= 19) mortality = 'MELD 10-19: ~6% 90-day mortality';
+      else if (meld <= 29) mortality = 'MELD 20-29: ~20% 90-day mortality';
+      else if (meld <= 39) mortality = 'MELD 30-39: ~53% 90-day mortality';
+      else                 mortality = 'MELD >= 40: ~71% 90-day mortality';
+
+  document.getElementById('meld-score').textContent = meld;
+  document.getElementById('meldna-score').textContent = meldNa;
+  document.getElementById('meld3-score').textContent = meld3;
+  document.getElementById('meld-mortality').textContent = mortality;
+  document.getElementById('meld-result').style.display = 'block';
+  }
+    <!-- ── ADD MORE CALCULATORS BELOW BY COPYING THE ACCORDION BLOCK ABOVE ── -->
+
+  </div>
+
   </script>
 
 </body>
 </html>
+
 
 
 
