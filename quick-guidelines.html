@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Page</title>
+  <title>GI Guidelines — ACG, AGA, ASGE &amp; AASLD</title>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
+
+```
 :root {
   --cream: #ddeef7;
   --ink: #12202e;
@@ -30,7 +31,7 @@ body {
 
 header {
   width: 100%;
-  max-width: 720px;
+  max-width: 760px;
   padding: 60px 24px 0;
   text-align: center;
   animation: fadeUp .7s ease both;
@@ -52,202 +53,535 @@ header p.subtitle {
   font-family: 'Lora', serif;
 }
 
+/* Society legend pills */
+.legend {
+  width: 100%;
+  max-width: 760px;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.legend-pill {
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 12px;
+  color: #fff;
+}
+
 .rule {
   width: 100%;
-  max-width: 720px;
+  max-width: 760px;
   padding: 0 24px;
-  margin: 32px 0;
-  animation: fadeUp .7s .1s ease both;
+  margin: 28px 0;
 }
 
-.rule hr {
-  border: none;
-  border-top: 1px solid var(--rule);
-}
+.rule hr { border: none; border-top: 1px solid var(--rule); }
 
-.intro {
+.back-link {
   width: 100%;
-  max-width: 720px;
+  max-width: 760px;
   padding: 0 24px;
-  animation: fadeUp .7s .2s ease both;
+  margin-bottom: 24px;
 }
 
-.intro p {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: var(--ink);
-}
-
-nav.links {
-  width: 100%;
-  max-width: 720px;
-  padding: 40px 24px 80px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  animation: fadeUp .7s .3s ease both;
-}
-
-nav.links a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  text-decoration: none;
-  color: var(--ink);
-  background: #c8e4f2;
-  transition: border-color .2s, box-shadow .2s, transform .15s;
-}
-
-nav.links a:hover {
-  border-color: var(--accent);
-  box-shadow: 0 4px 16px rgba(26,111,168,.12);
-  transform: translateY(-2px);
-}
-
-nav.links a .link-title {
-  font-family: 'Lora', serif;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-nav.links a .link-desc {
-  font-size: .88rem;
-  color: var(--muted);
-  margin-top: 3px;
-}
-
-nav.links a .arrow {
-  font-size: 1.2rem;
-  color: var(--accent);
-  flex-shrink: 0;
-  margin-left: 16px;
-  transition: transform .2s;
-}
-
-nav.links a:hover .arrow { transform: translateX(4px); }
-
-.references {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid var(--rule);
-}
-
-.references p.ref-label {
-  font-size: .85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-
-.references ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.references ul li a {
-  font-size: .95rem;
+.back-link a {
+  font-size: .9rem;
   color: var(--accent);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color .15s;
 }
 
-.references ul li a:hover {
-  border-bottom-color: var(--accent);
+.back-link a:hover { border-bottom-color: var(--accent); }
+
+.sections {
+  width: 100%;
+  max-width: 760px;
+  padding: 0 24px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeUp .7s .2s ease both;
 }
 
-.references ul li::before {
-  content: "↗ ";
+.accordion {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(26,111,168,.07);
+}
+
+.accordion-header {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+  transition: background .2s;
+}
+
+.accordion-header:hover { background: #155d8e; }
+
+.acc-title {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.acc-sub {
+  font-size: .82rem;
+  opacity: .8;
+  margin-top: 2px;
+}
+
+.chevron {
+  font-size: 1.2rem;
+  transition: transform .3s;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.accordion-header.open .chevron { transform: rotate(180deg); }
+
+.accordion-body {
+  display: none;
+  background: #fff;
+  border-top: 1px solid var(--rule);
+}
+
+.accordion-body.open { display: block; }
+
+/* Society sub-header */
+.society-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px 6px;
+  background: #f5fafd;
+  border-bottom: 1px solid var(--rule);
+}
+
+.link-list + .society-divider {
+  border-top: 2px solid var(--rule);
+}
+
+.society-badge {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.badge-acg   { background: #1a6fa8; }
+.badge-aga   { background: #2a8060; }
+.badge-asge  { background: #8a4a1a; }
+.badge-aasld { background: #6a2a8a; }
+
+.link-list { list-style: none; }
+.link-list li { border-bottom: 1px solid var(--rule); }
+.link-list li:last-child { border-bottom: none; }
+
+.link-list li a {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 18px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background .15s;
+  gap: 12px;
+}
+
+.link-list li a:hover { background: var(--cream); }
+.link-list li a:hover .link-title { color: var(--accent); }
+
+.link-title {
+  font-size: .93rem;
+  font-weight: 400;
+  line-height: 1.4;
+  transition: color .15s;
+  flex: 1;
+}
+
+.link-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.link-year {
+  font-size: .76rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.link-tag {
+  font-size: .67rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  padding: 1px 6px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tag-acg   { background: #deedf8; color: #1a6fa8; }
+.tag-aga   { background: #e5f4ee; color: #2a8060; }
+.tag-asge  { background: #f5ece4; color: #8a4a1a; }
+.tag-aasld { background: #f0e5f8; color: #6a2a8a; }
+.tag-cpu   { background: #f3ede5; color: #8a5a2a; }
+
+.source-note {
+  width: 100%;
+  max-width: 760px;
+  padding: 0 24px 40px;
   font-size: .8rem;
   color: var(--muted);
+  line-height: 1.9;
 }
+
+.source-note a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s;
+}
+
+.source-note a:hover { border-bottom-color: var(--accent); }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+```
 
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Quick Access Guidelines</h1>
-    <p class="subtitle">Reminder: Just Notes for Myself</p>
+    <h1>GI Guidelines</h1>
+    <p class="subtitle">ACG, AGA, ASGE &amp; AASLD — organized by topic</p>
   </header>
+
+  <div class="legend">
+    <span class="legend-pill badge-acg">ACG</span>
+    <span class="legend-pill badge-aga">AGA</span>
+    <span class="legend-pill badge-asge">ASGE</span>
+    <span class="legend-pill badge-aasld">AASLD</span>
+  </div>
 
   <div class="rule"><hr /></div>
 
-  <section class="intro">
-    <p>Here I will put quick access to guidelines and try to highlight the important parts of them. What System/Process are You Looking For?</p>
-
-  </section>
-
-  <nav class="links">
-
-
-<a href="https://poolas10.github.io/guidelines/colon-guidelines.html">
-  <div>
-    <div class="link-title">Colon</div>
-    <div class="link-desc">All things Colon outside of IBD</div>
+  <div class="back-link">
+    <a href="https://poolas10.github.io/quick-guidelines.html">&#8592; Back to Guidelines</a>
   </div>
-  <span class="arrow">→</span>
-</a>
 
-<a href="https://poolas10.github.io/guidelines/ibd-guidelines.html">
-  <div>
-    <div class="link-title">IBD</div>
-    <div class="link-desc">Not just the colon</div>
+  <div class="sections">
+
+```
+<!-- ══ COLON ══ -->
+<div class="accordion">
+  <button class="accordion-header" onclick="toggleAccordion(this)">
+    <div>
+      <div class="acc-title">Colon</div>
+      <div class="acc-sub">Colorectal cancer, polyps, lower GI bleeding, constipation, IBS</div>
+    </div>
+    <span class="chevron">&#9662;</span>
+  </button>
+  <div class="accordion-body">
+    <div class="society-divider"><span class="society-badge badge-acg">ACG</span></div>
+    <ul class="link-list">
+      <li><a href="http://www.doi.org/10.14309/ajg.0000000000003287" target="_blank"><span class="link-title">Optimizing Bowel Preparation Quality for Colonoscopy</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="http://www.doi.org/10.14309/ajg.0000000000002972" target="_blank"><span class="link-title">Quality Indicators for Colonoscopy</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/Fulltext/2023/02000/Management_of_Patients_With_Acute_Lower.14.aspx" target="_blank"><span class="link-title">Management of Acute Lower Gastrointestinal Bleeding</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://www.doi.org/10.14309/ajg.0000000000002227" target="_blank"><span class="link-title">Pharmacological Management of Chronic Idiopathic Constipation</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2021/01000/acg_clinical_guidelines__colorectal_cancer.13.aspx" target="_blank"><span class="link-title">Colorectal Cancer Screening</span><span class="link-meta"><span class="link-year">2021</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2015/02000/acg_clinical_guideline__genetic_testing_and.8.aspx" target="_blank"><span class="link-title">Genetic Testing and Management of Hereditary GI Cancer Syndromes</span><span class="link-meta"><span class="link-year">2015</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-aga">AGA</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(23)04771-6/fulltext" target="_blank"><span class="link-title">Risk Stratification for Colorectal Cancer Screening and Post-Polypectomy Surveillance</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-cpu">CPU</span></span></a></li>
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(22)00390-0/pdf" target="_blank"><span class="link-title">Pharmacological Management of IBS-C</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-aga">AGA</span></span></a></li>
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(22)00391-2/fulltext" target="_blank"><span class="link-title">Pharmacological Management of IBS-D</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-aga">AGA</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-asge">ASGE</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.giejournal.org/article/S0016-5107(25)00080-X/fulltext" target="_blank"><span class="link-title">Optimizing Bowel Preparation Quality for Colonoscopy (Multi-Society)</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2020.09.039" target="_blank"><span class="link-title">Endoscopic Recognition and Management of Malignant Colorectal Polyps</span><span class="link-meta"><span class="link-year">2020</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2020.01.029" target="_blank"><span class="link-title">Endoscopic Removal of Colorectal Lesions</span><span class="link-meta"><span class="link-year">2020</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2020.01.014" target="_blank"><span class="link-title">Recommendations for Follow-Up After Colonoscopy and Polypectomy</span><span class="link-meta"><span class="link-year">2020</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2019.09.007" target="_blank"><span class="link-title">Role of Endoscopy in Acute Colonic Pseudo-Obstruction and Colonic Volvulus</span><span class="link-meta"><span class="link-year">2020</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="http://dx.doi.org/10.1016/j.gie.2013.10.039" target="_blank"><span class="link-title">Role of Endoscopy in the Patient With Lower GI Bleeding</span><span class="link-meta"><span class="link-year">2014</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+    </ul>
   </div>
-  <span class="arrow">→</span>
-</a>
-
-<a href="https://poolas10.github.io/guidelines/gastric-guidelines.html">
-  <div>
-    <div class="link-title">Stomach</div>
-    <div class="link-desc">Feel that Burn</div>
-  </div>
-  <span class="arrow">→</span>
-</a>
-
-<a href="https://poolas10.github.io/guidelines/pancreas-guidelines.html">
-  <div>
-    <div class="link-title">Pancreas</div>
-    <div class="link-desc">What an interesting field.</div>
-  </div>
-  <span class="arrow">→</span>
-</a>
-
-<a href="https://poolas10.github.io/guidelines/endoscopy-guidelines.html">
-  <div>
-    <div class="link-title">Endoscopy</div>
-    <div class="link-desc">Could I put as stent in that?</div>
-  </div>
-  <span class="arrow">→</span>
-</a>
-
-
-  </nav>
-
- <div class="rule"><hr /></div>
-
-  <section class="rule">
-    <p>You think you had enough and want to go back to the beginning?</p>
-
-<div class="references">
-  <p class="ref-label">References &amp; Sources</p>
-  <ul>
-    <li><a href="https://poolas10.github.io" target="_blank">These were not the droids I was looking for - that is take me Back</a></li>
-  </ul>
 </div>
 
+<!-- ══ IBD ══ -->
+<div class="accordion">
+  <button class="accordion-header" onclick="toggleAccordion(this)">
+    <div>
+      <div class="acc-title">Inflammatory Bowel Disease (IBD)</div>
+      <div class="acc-sub">Crohn's disease, ulcerative colitis, preventive care, pregnancy</div>
+    </div>
+    <span class="chevron">&#9662;</span>
+  </button>
+  <div class="accordion-body">
+    <div class="society-divider"><span class="society-badge badge-acg">ACG</span></div>
+    <ul class="link-list">
+      <li><a href="https://journals.lww.com/ajg/fulltext/2025/07000/acg_clinical_guideline_update__preventive_care_in.15.aspx" target="_blank"><span class="link-title">IBD Preventive Care</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2025/06000/acg_clinical_guideline__management_of_crohn_s.14.aspx" target="_blank"><span class="link-title">Management of Crohn's Disease in Adults</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="http://www.doi.org/10.14309/ajg.0000000000003463" target="_blank"><span class="link-title">Ulcerative Colitis in Adults</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="http://www.doi.org/10.14309/ajg.0000000000003651" target="_blank"><span class="link-title">Global Consensus: Management of Pregnancy in IBD</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-aga">AGA</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(25)06091-3/fulltext" target="_blank"><span class="link-title">Pharmacological Management of Moderate-to-Severe Crohn's Disease (Living Guideline)</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-aga">AGA</span></span></a></li>
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(24)05563-X/fulltext" target="_blank"><span class="link-title">Pharmacological Management of Moderate-to-Severe Ulcerative Colitis (Living Guideline)</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-aga">AGA</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-asge">ASGE</span></div>
+    <ul class="link-list">
+      <li><a href="http://dx.doi.org/10.1016/j.gie.2014.10.030" target="_blank"><span class="link-title">Role of Endoscopy in Inflammatory Bowel Disease</span><span class="link-meta"><span class="link-year">2015</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="http://dx.doi.org/10.1016/j.gie.2014.12.009" target="_blank"><span class="link-title">SCENIC Consensus: Surveillance and Management of Dysplasia in IBD</span><span class="link-meta"><span class="link-year">2015</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ LIVER & BILIARY ══ -->
+<div class="accordion">
+  <button class="accordion-header" onclick="toggleAccordion(this)">
+    <div>
+      <div class="acc-title">Liver &amp; Biliary</div>
+      <div class="acc-sub">Cirrhosis, HE, ALD, MASLD/NAFLD, viral hepatitis, HCC, acute liver failure, biliary, transplant</div>
+    </div>
+    <span class="chevron">&#9662;</span>
+  </button>
+  <div class="accordion-body">
+    <div class="society-divider"><span class="society-badge badge-acg">ACG</span></div>
+    <ul class="link-list">
+      <li><a href="http://www.doi.org/10.14309/ajg.0000000000003899" target="_blank"><span class="link-title">Hepatic Encephalopathy</span><span class="link-meta"><span class="link-year">2026</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="http://www.doi.org/10.14309/ajg.0000000000003616" target="_blank"><span class="link-title">Perioperative Risk Assessment and Management in Cirrhosis</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://doi.org/10.14309/ajg.0000000000003379" target="_blank"><span class="link-title">Malnutrition and Nutritional Recommendations in Liver Disease</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2024/07000/acg_clinical_guideline__focal_liver_lesions.13.aspx" target="_blank"><span class="link-title">Focal Liver Lesions</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://www.doi.org/10.14309/ajg.0000000000002572" target="_blank"><span class="link-title">Alcohol-Associated Liver Disease</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://www.doi.org/10.14309/ajg.0000000000002340" target="_blank"><span class="link-title">Acute Liver Failure</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/Fulltext/2023/03000/ACG_Clinical_Guideline__Diagnosis_and_Management.14.aspx" target="_blank"><span class="link-title">Diagnosis and Management of Biliary Strictures</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2022/05000/acg_clinical_guideline__primary_sclerosing.12.aspx" target="_blank"><span class="link-title">Primary Sclerosing Cholangitis</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-aga">AGA</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(23)00881-8/fulltext" target="_blank"><span class="link-title">Role of Noninvasive Biomarkers in Evaluation and Management of NAFLD</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-cpu">CPU</span></span></a></li>
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(22)01026-5/fulltext" target="_blank"><span class="link-title">Pharmacological Interventions for Adults With Obesity</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-aga">AGA</span></span></a></li>
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(20)35538-4/fulltext" target="_blank"><span class="link-title">Lifestyle Modification Using Diet and Exercise for Weight Loss in NAFLD</span><span class="link-meta"><span class="link-year">2021</span><span class="link-tag tag-cpu">CPU</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-asge">ASGE</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.giejournal.org/article/S0016-5107(24)00188-3/fulltext" target="_blank"><span class="link-title">Role of Therapeutic EUS in Management of Biliary Tract Disorders</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2023.06.005" target="_blank"><span class="link-title">Role of Endoscopy in Diagnosis of Malignancy in Biliary Strictures of Undetermined Etiology</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2022.10.007" target="_blank"><span class="link-title">Management of Post–Liver Transplant Biliary Strictures</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2020.12.032" target="_blank"><span class="link-title">Management of Cholangitis</span><span class="link-meta"><span class="link-year">2021</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2020.12.035" target="_blank"><span class="link-title">Role of Endoscopy in Management of Malignant Hilar Obstruction</span><span class="link-meta"><span class="link-year">2021</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2018.10.001" target="_blank"><span class="link-title">Role of Endoscopy in Management of Choledocholithiasis</span><span class="link-meta"><span class="link-year">2019</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-aasld">AASLD</span></div>
+    <ul class="link-list">
+      <li><a href="https://journals.lww.com/hep/citation/9900/critical_update__aasld_practice_guidance_on.1176.aspx" target="_blank"><span class="link-title">Hepatocellular Carcinoma — Prevention, Diagnosis &amp; Treatment (Critical Update)</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://journals.lww.com/10.1097/HEP.0000000000001549" target="_blank"><span class="link-title">Treatment of Chronic Hepatitis B (AASLD/IDSA)</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://journals.lww.com/hep/fulltext/2023/12000/aasld_practice_guidance_on_prevention,_diagnosis,.27.aspx" target="_blank"><span class="link-title">Hepatocellular Carcinoma — Prevention, Diagnosis &amp; Treatment</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://doi.org/10.1097/HEP.0000000000000671" target="_blank"><span class="link-title">Acute-on-Chronic Liver Failure and Management of the Critically Ill Patient With Cirrhosis</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.hcvguidelines.org" target="_blank"><span class="link-title">Hepatitis C — HCV Guidance (AASLD/IDSA, Living Guidelines)</span><span class="link-meta"><span class="link-year">Living</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/alcohol-associated-liver-disease" target="_blank"><span class="link-title">Alcohol-Associated Liver Disease</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/node/516" target="_blank"><span class="link-title">Metabolic Dysfunction-Associated Steatotic Liver Disease (MASLD)</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/diagnosis-evaluation-and-management-ascites-spontaneous-bacterial-peritonitis" target="_blank"><span class="link-title">Ascites, Spontaneous Bacterial Peritonitis, and Hepatorenal Syndrome</span><span class="link-meta"><span class="link-year">2021</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/portal-hypertension-bleeding-cirrhosis" target="_blank"><span class="link-title">Portal Hypertension Bleeding in Cirrhosis</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/hepatic-encephalopathy" target="_blank"><span class="link-title">Hepatic Encephalopathy</span><span class="link-meta"><span class="link-year">2014</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/primary-biliary-cholangitis" target="_blank"><span class="link-title">Primary Biliary Cholangitis</span><span class="link-meta"><span class="link-year">2018</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/primary-sclerosing-cholangitis-and-cholangiocarcinoma" target="_blank"><span class="link-title">Primary Sclerosing Cholangitis and Cholangiocarcinoma</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/management-autoimmune-hepatitis" target="_blank"><span class="link-title">Autoimmune Hepatitis</span><span class="link-meta"><span class="link-year">2019</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/management-hemochromatosis" target="_blank"><span class="link-title">Hemochromatosis</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/diagnosis-and-treatment-wilson-disease" target="_blank"><span class="link-title">Wilson Disease — Diagnosis and Treatment</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/non-invasive-liver-disease-assessment" target="_blank"><span class="link-title">Noninvasive Liver Disease Assessment</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/malnutrition-frailty-and-sarcopenia-patient-cirrhosis" target="_blank"><span class="link-title">Malnutrition, Frailty, and Sarcopenia in Patients With Cirrhosis</span><span class="link-meta"><span class="link-year">2021</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/drug-herbal-and-dietary-supplement-induced-liver-injury" target="_blank"><span class="link-title">Drug, Herbal, and Dietary Supplement-Induced Liver Injury</span><span class="link-meta"><span class="link-year">2014</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/vascular-liver-disorders" target="_blank"><span class="link-title">Vascular Disorders of the Liver</span><span class="link-meta"><span class="link-year">2020</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/reproductive-health-and-liver-disease" target="_blank"><span class="link-title">Reproductive Health and Liver Disease</span><span class="link-meta"><span class="link-year">2021</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/transjugular-intrahepatic-portosystemic-shunt-tips" target="_blank"><span class="link-title">TIPS, Variceal Embolization, and Retrograde Transvenous Obliteration</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/liver-transplantation" target="_blank"><span class="link-title">Liver Transplantation</span><span class="link-meta"><span class="link-year">2021</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/palliative-care-and-symptom-based-management-decompensated-cirrhosis-0" target="_blank"><span class="link-title">Palliative Care and Symptom-Based Management for Decompensated Cirrhosis</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/management-acute-liver-failure" target="_blank"><span class="link-title">Management of Acute Liver Failure</span><span class="link-meta"><span class="link-year">2011</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+      <li><a href="https://www.aasld.org/practice-guidelines/liver-biopsy" target="_blank"><span class="link-title">Liver Biopsy</span><span class="link-meta"><span class="link-year">2009</span><span class="link-tag tag-aasld">AASLD</span></span></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ STOMACH / UPPER GI ══ -->
+<div class="accordion">
+  <button class="accordion-header" onclick="toggleAccordion(this)">
+    <div>
+      <div class="acc-title">Stomach &amp; Upper GI</div>
+      <div class="acc-sub">H. pylori, GERD, Barrett's, EoE, gastroparesis, gastric premalignant conditions, achalasia</div>
+    </div>
+    <span class="chevron">&#9662;</span>
+  </button>
+  <div class="accordion-body">
+    <div class="society-divider"><span class="society-badge badge-acg">ACG</span></div>
+    <ul class="link-list">
+      <li><a href="https://journals.lww.com/ajg/abstract/9900/acg_clinical_guideline__diagnosis_and_management.1623.aspx" target="_blank"><span class="link-title">Diagnosis and Management of Gastric Premalignant Conditions</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://doi.org/10.14309/ajg.0000000000003194" target="_blank"><span class="link-title">Diagnosis and Management of Eosinophilic Esophagitis (EoE)</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2024/09000/acg_clinical_guideline__treatment_of_helicobacter.13.aspx" target="_blank"><span class="link-title">Treatment of H. pylori Infection</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/Fulltext/2022/08000/ACG_Clinical_Guideline__Gastroparesis.15.aspx" target="_blank"><span class="link-title">Gastroparesis</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="http://doi.org/10.14309/ajg.0000000000001680" target="_blank"><span class="link-title">Diagnosis and Management of Barrett's Esophagus</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2022/01000/acg_clinical_guideline_for_the_diagnosis_and.15.aspx" target="_blank"><span class="link-title">Diagnosis and Management of GERD</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2021/01000/acg_clinical_guideline__upper_gastrointestinal_and.14.aspx" target="_blank"><span class="link-title">Upper GI and Ulcer Bleeding</span><span class="link-meta"><span class="link-year">2021</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-aga">AGA</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(25)05857-3/fulltext" target="_blank"><span class="link-title">Management of Gastroparesis</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-aga">AGA</span></span></a></li>
+      <li><a href="https://gastrojournal.org/article/S0016-5085(24)05663-4/fulltext" target="_blank"><span class="link-title">Screening and Surveillance for Gastric Cancer in High-Risk Individuals</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-cpu">CPU</span></span></a></li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/35123084/" target="_blank"><span class="link-title">Personalized Approach to Evaluation and Management of GERD</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-cpu">CPU</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-asge">ASGE</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.giejournal.org/article/S0016-5107(24)03559-4/fulltext" target="_blank"><span class="link-title">Diagnosis and Management of GERD</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2023.03.015" target="_blank"><span class="link-title">Endoscopic Submucosal Dissection for Early Esophageal and Gastric Cancers</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2020.07.063" target="_blank"><span class="link-title">Role of Endoscopy in Benign and Malignant Gastroduodenal Obstruction</span><span class="link-meta"><span class="link-year">2021</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2019.04.231" target="_blank"><span class="link-title">Management of Achalasia</span><span class="link-meta"><span class="link-year">2020</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2019.05.012" target="_blank"><span class="link-title">Screening and Surveillance of Barrett's Esophagus</span><span class="link-meta"><span class="link-year">2019</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="http://www.giejournal.org/article/S0016-5107(17)32408-2/fulltext" target="_blank"><span class="link-title">Endoscopic Eradication Therapy for Barrett's Esophagus–Associated Dysplasia and Intramucosal Cancer</span><span class="link-meta"><span class="link-year">2018</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="http://dx.doi.org/10.1016/j.gie.2015.03.1967" target="_blank"><span class="link-title">Role of Endoscopy in Management of Premalignant and Malignant Conditions of the Stomach</span><span class="link-meta"><span class="link-year">2015</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ PANCREAS ══ -->
+<div class="accordion">
+  <button class="accordion-header" onclick="toggleAccordion(this)">
+    <div>
+      <div class="acc-title">Pancreas</div>
+      <div class="acc-sub">Acute/chronic pancreatitis, pancreatic cysts, solid masses, ERCP, pancreatic cancer screening</div>
+    </div>
+    <span class="chevron">&#9662;</span>
+  </button>
+  <div class="accordion-body">
+    <div class="society-divider"><span class="society-badge badge-acg">ACG</span></div>
+    <ul class="link-list">
+      <li><a href="http://www.doi.org/10.14309/ajg.0000000000003825" target="_blank"><span class="link-title">Quality Indicators for ERCP</span><span class="link-meta"><span class="link-year">2026</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="http://www.doi.org/10.14309/ajg.0000000000002645" target="_blank"><span class="link-title">Acute Pancreatitis</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2020/10000/american_college_of_gastroenterology_guidelines.13.aspx" target="_blank"><span class="link-title">Chronic Pancreatitis</span><span class="link-meta"><span class="link-year">2020</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2018/04000/acg_clinical_guideline__diagnosis_and_management.8.aspx" target="_blank"><span class="link-title">Diagnosis and Management of Pancreatic Cysts</span><span class="link-meta"><span class="link-year">2018</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-aga">AGA</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(18)30087-6/fulltext" target="_blank"><span class="link-title">Management of Acute Pancreatitis</span><span class="link-meta"><span class="link-year">2018</span><span class="link-tag tag-aga">AGA</span></span></a></li>
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(15)00367-1/fulltext" target="_blank"><span class="link-title">Management of Pancreatic Cysts</span><span class="link-meta"><span class="link-year">2015</span><span class="link-tag tag-aga">AGA</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-asge">ASGE</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.giejournal.org/article/S0016-5107(24)03255-3/fulltext" target="_blank"><span class="link-title">Role of Endoscopy in Diagnosis and Management of Solid Pancreatic Masses</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://www.giejournal.org/article/S0016-5107(24)03249-8/fulltext" target="_blank"><span class="link-title">Role of Endoscopy in Management of Chronic Pancreatitis</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2022.10.005" target="_blank"><span class="link-title">Post-ERCP Pancreatitis Prevention Strategies</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2021.12.001" target="_blank"><span class="link-title">Screening for Pancreatic Cancer in Individuals With Genetic Susceptibility</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ SMALL BOWEL ══ -->
+<div class="accordion">
+  <button class="accordion-header" onclick="toggleAccordion(this)">
+    <div>
+      <div class="acc-title">Small Bowel</div>
+      <div class="acc-sub">Celiac disease, subepithelial lesions, capsule endoscopy, functional diarrhea, small bowel bleeding</div>
+    </div>
+    <span class="chevron">&#9662;</span>
+  </button>
+  <div class="accordion-body">
+    <div class="society-divider"><span class="society-badge badge-acg">ACG</span></div>
+    <ul class="link-list">
+      <li><a href="https://journals.lww.com/ajg/Fulltext/2023/01000/American_College_of_Gastroenterology_Guidelines.17.aspx" target="_blank"><span class="link-title">Diagnosis and Management of Celiac Disease</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/Fulltext/2023/01000/ACG_Clinical_Guideline__Diagnosis_and_Management.16.aspx" target="_blank"><span class="link-title">Diagnosis and Management of GI Subepithelial Lesions</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/Fulltext/2022/11000/Quality_Indicators_for_Capsule_Endoscopy_and_Deep.20.aspx" target="_blank"><span class="link-title">Quality Indicators for Capsule Endoscopy and Deep Enteroscopy</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-aga">AGA</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.gastrojournal.org/article/S0016-5085(19)41083-4/fulltext" target="_blank"><span class="link-title">Laboratory Evaluation of Functional Diarrhea and IBS-D</span><span class="link-meta"><span class="link-year">2019</span><span class="link-tag tag-aga">AGA</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-asge">ASGE</span></div>
+    <ul class="link-list">
+      <li><a href="http://dx.doi.org/10.1016/j.gie.2016.06.013" target="_blank"><span class="link-title">Role of Endoscopy in Management of Suspected Small-Bowel Bleeding</span><span class="link-meta"><span class="link-year">2017</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="http://dx.doi.org/10.1016/j.gie.2015.06.046" target="_blank"><span class="link-title">Role of Deep Enteroscopy in Management of Small-Bowel Disorders</span><span class="link-meta"><span class="link-year">2015</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ ENDOSCOPY & PROCEDURES ══ -->
+<div class="accordion">
+  <button class="accordion-header" onclick="toggleAccordion(this)">
+    <div>
+      <div class="acc-title">Endoscopy &amp; Procedures</div>
+      <div class="acc-sub">Quality indicators, anticoagulation, EUS, informed consent, hereditary polyposis, staffing</div>
+    </div>
+    <span class="chevron">&#9662;</span>
+  </button>
+  <div class="accordion-body">
+    <div class="society-divider"><span class="society-badge badge-acg">ACG</span></div>
+    <ul class="link-list">
+      <li><a href="https://journals.lww.com/ajg/FullText/9900/.01716.aspx" target="_blank"><span class="link-title">Quality Indicators for EUS</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2025/02000/quality_indicators_for_upper_gi_endoscopy.15.aspx" target="_blank"><span class="link-title">Quality Indicators for Upper GI Endoscopy</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/fulltext/2024/09000/quality_indicators_common_to_all_gastrointestinal.15.aspx" target="_blank"><span class="link-title">Quality Indicators Common to All GI Endoscopic Procedures</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+      <li><a href="https://journals.lww.com/ajg/Fulltext/9900/American_College_of_Gastroenterology_Canadian.285.aspx" target="_blank"><span class="link-title">Management of Anticoagulants/Antiplatelets During Acute GI Bleeding and Periendoscopic Period</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-acg">ACG</span></span></a></li>
+    </ul>
+    <div class="society-divider"><span class="society-badge badge-asge">ASGE</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.giejournal.org/article/S0016-5107(24)03505-3/fulltext" target="_blank"><span class="link-title">Gastrostomy Feeding Tubes</span><span class="link-meta"><span class="link-year">2025</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2023.05.056" target="_blank"><span class="link-title">Role of Ergonomics for Prevention of Endoscopy-Related Injury</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2022.04.024" target="_blank"><span class="link-title">Adverse Events Associated With EGD and EGD-Related Techniques</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2021.10.022" target="_blank"><span class="link-title">Informed Consent for GI Endoscopic Procedures</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2021.09.009" target="_blank"><span class="link-title">Adverse Events Associated With EUS and EUS-Guided Procedures</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2020.01.028" target="_blank"><span class="link-title">Role of Endoscopy in Familial Adenomatous Polyposis Syndromes</span><span class="link-meta"><span class="link-year">2020</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+      <li><a href="https://doi.org/10.1016/j.gie.2019.12.002" target="_blank"><span class="link-title">Minimum Staffing Requirements for the Performance of GI Endoscopy</span><span class="link-meta"><span class="link-year">2020</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
+    </ul>
+  </div>
+</div>
+```
+
+  </div><!-- end .sections -->
+
+  <div class="source-note">
+    <strong>ACG:</strong> <a href="https://gi.org/guidelines/" target="_blank">gi.org/guidelines</a> &nbsp;·&nbsp;
+    <strong>AGA:</strong> <a href="https://gastro.org/clinical-guidance/" target="_blank">gastro.org/clinical-guidance</a> &nbsp;·&nbsp;
+    <strong>ASGE:</strong> <a href="https://www.asge.org/home/resources/publications/guidelines" target="_blank">asge.org/guidelines</a> &nbsp;·&nbsp;
+    <strong>AASLD:</strong> <a href="https://www.aasld.org/practice-guidelines" target="_blank">aasld.org/practice-guidelines</a><br>
+    <em>CPU = AGA Clinical Practice Update. Always verify currency directly with each society's website.</em>
+  </div>
+
+  <script>
+    function toggleAccordion(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.accordion-header').forEach(b => b.classList.remove('open'));
+      if (!isOpen) {
+        body.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+  </script>
 
 </body>
 </html>
