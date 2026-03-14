@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    
 :root {
   --cream: #ddeef7;
   --ink: #12202e;
@@ -189,6 +189,7 @@ header p.subtitle {
 .badge-aga   { background: #2a8060; }
 .badge-asge  { background: #8a4a1a; }
 .badge-aasld { background: #6a2a8a; }
+.badge-other { background: #4a5568; }
 
 .link-list { list-style: none; }
 .link-list li { border-bottom: 1px solid var(--rule); }
@@ -244,6 +245,7 @@ header p.subtitle {
 .tag-aga   { background: #e5f4ee; color: #2a8060; }
 .tag-asge  { background: #f5ece4; color: #8a4a1a; }
 .tag-aasld { background: #f0e5f8; color: #6a2a8a; }
+.tag-other { background: #edf0f4; color: #4a5568; }
 .tag-cpu   { background: #f3ede5; color: #8a5a2a; }
 
 .source-note {
@@ -283,16 +285,16 @@ header p.subtitle {
     <span class="legend-pill badge-aga">AGA</span>
     <span class="legend-pill badge-asge">ASGE</span>
     <span class="legend-pill badge-aasld">AASLD</span>
+    <span class="legend-pill badge-other">Other</span>
   </div>
 
   <div class="rule"><hr /></div>
 
   <div class="back-link">
-    <a href="https://poolas10.github.io/">&#8592; Back to Home</a>
+    <a href="https://poolas10.github.io/quick-guidelines.html">&#8592; Back to Guidelines</a>
   </div>
 
   <div class="sections">
-
 
 <!-- ══ COLON ══ -->
 <div class="accordion">
@@ -496,6 +498,10 @@ header p.subtitle {
       <li><a href="https://doi.org/10.1016/j.gie.2022.10.005" target="_blank"><span class="link-title">Post-ERCP Pancreatitis Prevention Strategies</span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
       <li><a href="https://doi.org/10.1016/j.gie.2021.12.001" target="_blank"><span class="link-title">Screening for Pancreatic Cancer in Individuals With Genetic Susceptibility</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-asge">ASGE</span></span></a></li>
     </ul>
+    <div class="society-divider"><span class="society-badge badge-other">Other</span></div>
+    <ul class="link-list">
+      <li><a href="https://www.sciencedirect.com/science/article/pii/S1424390323018835?via%3Dihub" target="_blank"><span class="link-title">Kyoto Guidelines 2024 — Revised International Consensus Guidelines on IPMN of the Pancreas (IAP/EPC)</span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-other">Other</span></span></a></li>
+    </ul>
   </div>
 </div>
 
@@ -517,7 +523,6 @@ header p.subtitle {
     </ul>
     <div class="society-divider"><span class="society-badge badge-aga">AGA</span></div>
     <ul class="link-list">
-      <li><a href="https://doi.org/10.1016/j.cgh.2022.05.032" target="_blank"><span class="link-title">Clinical Practice Update on Management of Short Bowel Syndrome: Expert Review</span><span class="link-meta"><span class="link-year">2022</span><span class="link-tag tag-aga">AGA</span></span></a></li>
       <li><a href="https://www.gastrojournal.org/article/S0016-5085(19)41083-4/fulltext" target="_blank"><span class="link-title">Laboratory Evaluation of Functional Diarrhea and IBS-D</span><span class="link-meta"><span class="link-year">2019</span><span class="link-tag tag-aga">AGA</span></span></a></li>
     </ul>
     <div class="society-divider"><span class="society-badge badge-asge">ASGE</span></div>
@@ -558,6 +563,23 @@ header p.subtitle {
   </div>
 </div>
 
+<!-- ══ OTHER ══ -->
+<div class="accordion">
+  <button class="accordion-header" onclick="toggleAccordion(this)">
+    <div>
+      <div class="acc-title">Other</div>
+      <div class="acc-sub">Selected reviews &amp; articles outside major society guidelines</div>
+    </div>
+    <span class="chevron">&#9662;</span>
+  </button>
+  <div class="accordion-body">
+    <div class="society-divider"><span class="society-badge badge-other">Other</span></div>
+    <ul class="link-list">
+      <li><a href="https://link.springer.com/article/10.1007/s11864-024-01267-4" target="_blank"><span class="link-title">An Update on the Management of Rectal Neuroendocrine Neoplasms — Frydman &amp; Srirajaskanthan, <em>Curr Treat Options Oncol</em></span><span class="link-meta"><span class="link-year">2024</span><span class="link-tag tag-other">Other</span></span></a></li>
+      <li><a href="https://onlinelibrary.wiley.com/doi/10.1111/jne.13306" target="_blank"><span class="link-title">ENETS 2023 Guidance Paper for Gastroduodenal Neuroendocrine Tumours (NETs) G1–G3 — Panzuto et al., <em>J Neuroendocrinol</em></span><span class="link-meta"><span class="link-year">2023</span><span class="link-tag tag-other">Other</span></span></a></li>
+    </ul>
+  </div>
+</div>
 
   </div><!-- end .sections -->
 
@@ -566,7 +588,7 @@ header p.subtitle {
     <strong>AGA:</strong> <a href="https://gastro.org/clinical-guidance/" target="_blank">gastro.org/clinical-guidance</a> &nbsp;·&nbsp;
     <strong>ASGE:</strong> <a href="https://www.asge.org/home/resources/publications/guidelines" target="_blank">asge.org/guidelines</a> &nbsp;·&nbsp;
     <strong>AASLD:</strong> <a href="https://www.aasld.org/practice-guidelines" target="_blank">aasld.org/practice-guidelines</a><br>
-    <em>Always verify information directly with each society's website.</em>
+    <em>CPU = AGA Clinical Practice Update. Other = selected reviews outside major society guidelines. Always verify currency directly with each society's website.</em>
   </div>
 
   <script>
