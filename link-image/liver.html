@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colon Quick Access Figures</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #ddeef7;
+      --ink: #12202e;
+      --muted: #3a5a72;
+      --accent: #1a6fa8;
+      --rule: #a8cfe0;
+      --card-bg: #c8e4f2;
+      --header-bg: #1a6fa8;
+      --row-alt: #eef6fb;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      max-width: 1000px;
+      padding: 60px 24px 0;
+      text-align: center;
+      animation: fadeUp .7s ease both;
+    }
+
+    header h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+
+    header p.subtitle {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: var(--muted);
+      font-style: italic;
+      font-family: 'Lora', serif;
+    }
+
+    .rule {
+      width: 100%;
+      max-width: 900px;
+      padding: 0 24px;
+      margin: 32px 0;
+    }
+
+    .rule hr { border: none; border-top: 1px solid var(--rule); }
+
+    .back-link {
+      width: 100%;
+      max-width: 900px;
+      padding: 0 24px;
+      margin-bottom: 24px;
+    }
+
+    .back-link a {
+      font-size: .9rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .15s;
+    }
+
+    .back-link a:hover { border-bottom-color: var(--accent); }
+
+    /* ── Section label ── */
+    .section-label {
+      width: 100%;
+      max-width: 900px;
+      padding: 0 24px 16px;
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ── Image grid ── */
+    .image-grid {
+      width: 100%;
+      max-width: 900px;
+      padding: 0 24px 32px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      animation: fadeUp .7s .1s ease both;
+    }
+
+    .image-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .image-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(26,111,168,.12);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      background: #fff;
+    }
+
+    .image-card .card-body { padding: 12px 14px; }
+
+    .image-card .card-title {
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    .image-card .card-caption {
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .image-card .card-source a {
+      font-size: .78rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .15s;
+    }
+
+    .image-card .card-source a:hover { border-bottom-color: var(--accent); }
+
+    /* ── Accordion sections ── */
+    .sections {
+      width: 100%;
+      max-width: 900px;
+      padding: 0 24px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeUp .7s .2s ease both;
+    }
+
+    .accordion {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(26,111,168,.07);
+    }
+
+    .accordion-header {
+      width: 100%;
+      background: var(--header-bg);
+      color: #fff;
+      border: none;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      transition: background .2s;
+    }
+
+    .accordion-header:hover { background: #155d8e; }
+
+    .acc-title {
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .acc-subtitle {
+      font-size: .8rem;
+      opacity: .8;
+      margin-top: 2px;
+    }
+
+    .chevron {
+      font-size: 1.2rem;
+      transition: transform .3s;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    .accordion-header.open .chevron { transform: rotate(180deg); }
+
+    .accordion-body {
+      display: none;
+      overflow-x: auto;
+    }
+
+    .accordion-body.open { display: block; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+      background: #fff;
+    }
+
+    thead tr { background: var(--card-bg); }
+
+    thead th {
+      padding: 12px 14px;
+      text-align: left;
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--accent);
+      border-bottom: 2px solid var(--rule);
+      border-right: 1px solid var(--rule);
+    }
+
+    thead th:last-child { border-right: none; }
+
+    tbody tr { border-bottom: 1px solid var(--rule); }
+    tbody tr:nth-child(even) { background: var(--row-alt); }
+    tbody tr:hover { background: #d8edf7; }
+
+    td {
+      padding: 10px 14px;
+      vertical-align: top;
+      line-height: 1.55;
+      border-right: 1px solid var(--rule);
+    }
+
+    td:last-child { border-right: none; }
+    td.syndrome { font-weight: 600; }
+    td.gene { font-style: italic; color: var(--muted); font-size: .82rem; }
+
+    td ul { list-style: disc; padding-left: 16px; }
+    td ul li { margin-bottom: 3px; }
+
+    .source-note {
+      width: 100%;
+      max-width: 900px;
+      padding: 0 24px 40px;
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .source-note a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .15s;
+    }
+
+    .source-note a:hover { border-bottom-color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Liver Quick Access Figures</h1>
+    <p class="subtitle">Visual references and figures</p>
+  </header>
+
+  <div class="rule"><hr /></div>
+
+  <div class="back-link">
+    <a href="https://poolas10.github.io/quick-figures.html">&#8592; Back to Figures</a>
+  </div>
+
+  <!-- ── Images ── -->
+  <div class="section-label">Images</div>
+
+  <div class="image-grid">
+
+    <div class="image-card">
+      <img src="https://raw.githubusercontent.com/Poolas10/poolas10.github.io/refs/heads/main/Images/elvlfts.jpeg" alt="IBS-C" />
+      <div class="card-body">
+        <div class="card-title">IBS-C Medications</div>
+        <div class="card-caption">AGA July 2022 (Spotlight)</div>
+        <div class="card-source"><a href="https://www.gastrojournal.org/action/showPdf?pii=S0016-5085%2826%2900239-8" target="_blank">2026 AGA-CGH:Evaluation of Abnormal Liver Biochemical Test Results</a></div>
+      </div>
+    </div>
+
+
+    <div class="image-card">
+      <img src="https://raw.githubusercontent.com/Poolas10/poolas10.github.io/refs/heads/main/Images/elvalp.jpeg" alt="IBS-C" />
+      <div class="card-body">
+        <div class="card-title">IBS-C Medications</div>
+        <div class="card-caption">AGA July 2022 (Spotlight)</div>
+        <div class="card-source"><a href="https://www.gastrojournal.org/action/showPdf?pii=S0016-5085%2826%2900239-8" target="_blank">2026 AGA-CGH:Evaluation of Abnormal Liver Biochemical Test Results</a></div>
+      </div>
+    </div>
+
+    <!-- Add more image cards here -->
+
+  </div>
+
+  <div class="rule" style="padding:0 24px;"><hr /></div>
+  
+  <script>
+    function toggleAccordion(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.accordion-header').forEach(b => b.classList.remove('open'));
+      if (!isOpen) {
+        body.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+  </script>
+
+</body>
+</html>
