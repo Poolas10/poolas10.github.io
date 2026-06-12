@@ -103,10 +103,10 @@ ul.dl li::before { content: '→'; position: absolute; left: 0; color: var(--fai
   .page-header p { font-size: 11px; }
   .legend { display: none; }
 
-  /* Tabs — scrollable */
-  .tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 0; border-bottom: 2px solid var(--border); }
-  .tab { flex: 0 0 auto; padding: 8px 14px; font-size: 12px; white-space: nowrap; border-radius: 0; border: none; border-bottom: 3px solid transparent; background: transparent; }
-  .tab.active { border-bottom: 3px solid var(--aga); color: var(--text); background: transparent; }
+  /* Tabs — single row, 4 equal columns, labels wrap */
+  .tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-bottom: 2px solid var(--border); overflow-x: visible; }
+  .tab { padding: 7px 4px; font-size: 11px; white-space: normal; text-align: center; border-radius: 0; border: none; border-bottom: 3px solid transparent; background: transparent; line-height: 1.25; color: var(--muted); }
+  .tab.active { border-bottom: 3px solid var(--aga); color: var(--text); background: #f0f5fb; }
 
   .panel { border-left: none; border-right: none; border-radius: 0; overflow-x: visible; }
 
