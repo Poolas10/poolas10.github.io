@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBD Treatment Guidelines Reference</title>
+<style>
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --border: #dde3ec;
+  --text: #1a2233;
+  --muted: #6b7a99;
+  --faint: #9aa3b8;
+  --aga: #1a6fb5;
+  --aga-bg: #e8f2fb;
+  --acg: #2a7a4b;
+  --acg-bg: #e6f4ec;
+  --mild-bg: #fffcec;
+  --mild-border: #e8d060;
+  --mild-head: #6b4f00;
+  --mod-bg: #fff4ed;
+  --mod-border: #e8915a;
+  --mod-head: #7a3200;
+  --radius: 7px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); font-size: 13px; line-height: 1.5; padding: 20px 14px 60px; }
+
+/* Header */
+.page-header { max-width: 1500px; margin: 0 auto 18px; padding-left: 14px; border-left: 4px solid var(--aga); }
+.page-header h1 { font-size: 20px; font-weight: 700; letter-spacing: -.3px; }
+.page-header p { color: var(--muted); font-size: 12px; margin-top: 3px; }
+
+/* Legend */
+.legend { max-width: 1500px; margin: 0 auto 16px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 11.5px; color: var(--muted); }
+.badge { display: inline-block; font-size: 10.5px; font-weight: 700; padding: 2px 7px; border-radius: 3px; letter-spacing: .3px; }
+.b-aga { background: var(--aga-bg); color: var(--aga); }
+.b-acg { background: var(--acg-bg); color: var(--acg); }
+.leg { display: flex; align-items: center; gap: 5px; }
+.dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.dot-mild { background: #f5e070; border: 1px solid var(--mild-border); }
+.dot-mod  { background: #f5b080; border: 1px solid var(--mod-border); }
+
+/* Tabs */
+.tabs { max-width: 1500px; margin: 0 auto; display: flex; gap: 2px; border-bottom: 2px solid var(--border); position: relative; }
+.tab { padding: 9px 20px; font-size: 12.5px; font-weight: 600; color: var(--muted); cursor: pointer; border-radius: 6px 6px 0 0; border: 2px solid transparent; border-bottom: none; background: transparent; transition: .15s; }
+.tab:hover { color: var(--text); background: #e8ecf4; }
+.tab.active { color: var(--text); background: var(--surface); border-color: var(--border); border-bottom-color: var(--surface); }
+
+/* Panels */
+.panel { max-width: 1500px; margin: 0 auto; display: none; background: var(--surface); border: 2px solid var(--border); border-top: none; border-radius: 0 0 var(--radius) var(--radius); overflow-x: auto; }
+.panel.active { display: block; }
+
+/* Section labels */
+.sec-label { display: grid; grid-template-columns: 200px 1fr 1fr; font-size: 11px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; }
+.sec-label .sl-cat { background: #f0f3f8; color: var(--muted); padding: 8px 14px; border-right: 1px solid var(--border); }
+.sec-label .sl-mild { background: var(--mild-bg); color: var(--mild-head); padding: 8px 14px; border-right: 1px solid var(--mild-border); display: flex; align-items: center; gap: 6px; }
+.sec-label .sl-mod  { background: var(--mod-bg);  color: var(--mod-head);  padding: 8px 14px; display: flex; align-items: center; gap: 6px; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; min-width: 900px; }
+th { background: #f0f3f8; color: var(--muted); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; padding: 7px 12px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+td { padding: 10px 12px; vertical-align: top; border-bottom: 1px solid #edf1f7; font-size: 12.5px; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f8fafd; }
+td.cat { font-weight: 600; color: var(--text); width: 150px; white-space: nowrap; }
+td.soc { width: 68px; }
+td.mild-col { background: rgba(255,252,236,.45); border-right: 1px solid var(--mild-border); }
+td.mod-col  { background: rgba(255,244,237,.35); }
+
+/* Drug lists */
+ul.dl { list-style: none; padding: 0; margin: 0; }
+ul.dl li { padding: 1px 0 1px 14px; position: relative; }
+ul.dl li::before { content: '→'; position: absolute; left: 0; color: var(--faint); font-size: 10px; top: 3px; }
+.note { font-size: 11.5px; color: var(--faint); font-style: italic; margin-top: 4px; }
+.no { color: #c0392b; font-weight: 600; }
+.str::after { content: ' ★'; color: #d4820a; font-size: 10px; }
+.tag { display: inline-block; font-size: 9.5px; font-weight: 700; padding: 1px 5px; border-radius: 2px; margin-right: 3px; vertical-align: middle; }
+.t-hi  { background: #fde8e8; color: #b42020; }
+.t-int { background: #fef3e0; color: #9a6200; }
+.t-lo  { background: #e8f6ee; color: #1d7a42; }
+.src-row td { background: #f5f7fb; font-size: 11px; color: var(--faint); font-style: italic; padding: 6px 12px; border-top: 1px solid var(--border); }
+
+/* Biomarker table specific */
+.bm-section { padding: 10px 14px 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: var(--muted); border-bottom: 1px solid var(--border); background: #f0f3f8; }
+
+/* Pouchitis — single-severity table */
+.pouch-section { padding: 8px 14px; font-size: 11px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+.ps-acute { background: #ecf6ff; color: #1a4a7a; }
+.ps-cadp  { background: #fff4e0; color: #7a4900; }
+.ps-carp  { background: #fdecea; color: #8a1c1c; }
+.ps-cdp   { background: #f0eefb; color: #4a1fa0; }
+.ps-cuffitis { background: #f0faf4; color: #1a5c30; }
+
+.footnotes { max-width: 1500px; margin: 14px auto 0; font-size: 11px; color: var(--faint); line-height: 1.8; padding: 10px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.footnotes strong { color: var(--muted); }
+
+@media (max-width: 700px) {
+  body { padding: 12px 8px 48px; font-size: 12.5px; line-height: 1.3; }
+
+  .page-header h1 { font-size: 15px; }
+  .page-header p { font-size: 11px; }
+  .legend { display: none; }
+
+  /* Tabs — scrollable */
+  .tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 0; border-bottom: 2px solid var(--border); }
+  .tab { flex: 0 0 auto; padding: 8px 14px; font-size: 12px; white-space: nowrap; border-radius: 0; border: none; border-bottom: 3px solid transparent; background: transparent; }
+  .tab.active { border-bottom: 3px solid var(--aga); color: var(--text); background: transparent; }
+
+  .panel { border-left: none; border-right: none; border-radius: 0; overflow-x: visible; }
+
+  /* Hide original sec-label and desktop tables for UC/CD — mobile view injected via JS */
+  .sec-label { display: none; }
+  .mobile-hidden { display: none !important; }
+
+  /* Mobile severity section headers */
+  .mob-section-head {
+    padding: 7px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .mob-mild-head { background: var(--mild-bg); color: var(--mild-head); border-color: var(--mild-border); }
+  .mob-mod-head  { background: var(--mod-bg);  color: var(--mod-head);  border-color: var(--mod-border); }
+
+  /* Accordion rows */
+  .mob-cat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    font-size: 11.5px;
+    font-weight: 700;
+    background: #f0f3f8;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+  }
+  .mob-cat-row::after { content: '▾'; font-size: 11px; color: var(--faint); flex-shrink: 0; margin-left: 6px; }
+  .mob-cat-row.open::after { content: '▴'; }
+
+  .mob-content {
+    display: none;
+    border-bottom: 2px solid var(--border);
+  }
+  .mob-content.open { display: block; }
+
+  .mob-society-row {
+    padding: 6px 10px 8px;
+    font-size: 12.5px;
+    line-height: 1.3;
+    border-bottom: 1px solid #edf1f7;
+  }
+  .mob-society-row:last-child { border-bottom: none; }
+  .mob-soc-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-bottom: 4px;
+  }
+
+  /* Biomarker / Pouchitis tables — simpler stacked layout */
+  .bm-section { font-size: 11px; padding: 7px 10px; }
+  thead { display: none; }
+  table { min-width: unset; width: 100%; }
+  tbody { display: block; }
+  tr { display: block; border-bottom: 2px solid var(--border); }
+  tr:last-child { border-bottom: none; }
+  tr.src-row td { display: block; font-size: 10.5px; padding: 5px 10px; background: #f5f7fb; }
+  td { display: block; width: 100%; padding: 7px 10px; font-size: 12.5px; line-height: 1.3; border-bottom: 1px solid #edf1f7; }
+  td.cat { font-size: 11.5px; font-weight: 700; background: #f0f3f8; padding: 6px 10px; }
+  td.soc { display: none; }
+  td.mild-col, td.mod-col { display: none; } /* hidden — replaced by JS sections */
+  td[style*="font-weight:600"] { font-size: 11px; }
+
+  ul.dl li { font-size: 12.5px; line-height: 1.3; padding-left: 12px; }
+  .note { font-size: 11px; line-height: 1.3; }
+
+  .footnotes { font-size: 10.5px; line-height: 1.4; padding: 8px 10px; border-radius: 0; border-left: none; border-right: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>IBD Clinical Guidelines — Quick Reference</h1>
+  <p>AGA &amp; ACG recommendations for UC, Crohn's, Biomarkers, and Pouchitis · Compiled June 2026</p>
+</div>
+
+<div class="legend">
+  <div class="leg"><span class="badge b-aga">AGA</span> American Gastroenterological Association</div>
+  <div class="leg"><span class="badge b-acg">ACG</span> American College of Gastroenterology</div>
+  <div class="leg"><span class="tag t-hi">HIGH</span> Higher efficacy</div>
+  <div class="leg"><span class="tag t-int">INT</span> Intermediate efficacy</div>
+  <div class="leg"><span class="tag t-lo">LOW</span> Lower efficacy</div>
+  <div class="leg">★ = Strong recommendation</div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('uc',this)">Ulcerative Colitis</button>
+  <button class="tab" onclick="show('cd',this)">Crohn's Disease</button>
+  <button class="tab" onclick="show('bm',this)">Biomarkers</button>
+  <button class="tab" onclick="show('po',this)">Pouchitis</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ULCERATIVE COLITIS
+══════════════════════════════════════════ -->
+<div class="panel active" id="panel-uc">
+  <div class="sec-label">
+    <div class="sl-cat">Category / Society</div>
+    <div class="sl-mild">Mild-to-Moderate UC</div>
+    <div class="sl-mod">Moderate-to-Severe UC</div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:150px">Category</th>
+        <th style="width:68px">Society</th>
+        <th class="mild-col">Mild-to-Moderate — Induction &amp; Maintenance</th>
+        <th class="mod-col">Moderate-to-Severe — Induction &amp; Maintenance</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- 5-ASA / Topical -->
+      <tr>
+        <td class="cat" rowspan="2">5-ASA / Topical Therapy</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col">
+          <ul class="dl">
+            <li><strong>Proctitis:</strong> Rectal 5-ASA ≥1 g/day for induction &amp; maintenance <span class="str"></span></li>
+            <li><strong>Left-sided/Extensive:</strong> Oral 5-ASA ≥2 g/day <span class="str"></span></li>
+            <li>Add rectal 5-ASA to oral for left-sided disease</li>
+            <li>Rectal corticosteroid if 5-ASA not tolerated</li>
+          </ul>
+          <p class="note"><span class="no">Not for maintenance:</span> Systemic corticosteroids</p>
+        </td>
+        <td class="mod-col">
+          <p class="note">5-ASA not recommended as primary therapy for mod-severe UC</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col">
+          <ul class="dl">
+            <li>Standard-dose mesalamine 2–3 g/day or diazo-bonded 5-ASA <span class="str"></span></li>
+            <li>Add rectal mesalamine for left-sided/extensive disease</li>
+            <li>High-dose mesalamine >3 g/day + rectal if suboptimal response</li>
+            <li>Once-daily oral dosing preferred</li>
+          </ul>
+        </td>
+        <td class="mod-col">
+          <p class="note">Not addressed in mod-severe guideline</p>
+        </td>
+      </tr>
+
+      <!-- Budesonide -->
+      <tr>
+        <td class="cat" rowspan="2">Budesonide MMX</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col">
+          <ul class="dl">
+            <li>Oral budesonide MMX 9 mg/day for moderately active UC <span class="str"></span></li>
+          </ul>
+          <p class="note">Induction only; not for maintenance</p>
+        </td>
+        <td class="mod-col"><p class="note">Not recommended as primary mod-severe agent</p></td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col">
+          <ul class="dl">
+            <li>Oral budesonide MMX for moderate activity failing 5-ASA</li>
+            <li>Rectal corticosteroids as adjunct or alternative</li>
+          </ul>
+        </td>
+        <td class="mod-col"><p class="note">Not a primary recommendation</p></td>
+      </tr>
+
+      <!-- Immunomodulators -->
+      <tr>
+        <td class="cat" rowspan="2">Immunomodulators (Thiopurines / MTX)</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col">
+          <ul class="dl">
+            <li>Thiopurine (AZA/6-MP) for steroid-dependent/frequent relapse <span class="str"></span></li>
+          </ul>
+          <p class="note"><span class="no">Against:</span> Thiopurine or MTX monotherapy for induction</p>
+        </td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>IFX + thiopurine combination superior to IFX monotherapy <span class="str"></span></li>
+          </ul>
+          <p class="note"><span class="no">Against:</span> Thiopurine monotherapy for induction of mod-severe UC</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col">
+          <ul class="dl">
+            <li>Thiopurine monotherapy for maintenance of corticosteroid-induced remission</li>
+          </ul>
+          <p class="note"><span class="no">Against:</span> Methotrexate monotherapy (induction or maintenance)</p>
+        </td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>IFX/ADA/GOL + immunomodulator preferred over TNF monotherapy</li>
+          </ul>
+          <p class="note"><span class="no">Against:</span> Thiopurine monotherapy for induction<br>Thiopurine monotherapy: suggested for maintenance of corticosteroid-induced remission<br>No rec on immunomodulator withdrawal in remission on combo TNF therapy</p>
+        </td>
+      </tr>
+
+      <!-- Corticosteroids mod-severe -->
+      <tr>
+        <td class="cat" rowspan="2">Systemic Corticosteroids</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col"><p class="note"><span class="no">Not recommended</span> for maintenance. Budesonide MMX preferred over systemic steroids for mild-moderate.</p></td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>Oral systemic corticosteroids for induction <span class="str"></span></li>
+            <li>IV methylprednisolone 40–60 mg/day or IV hydrocortisone 300–400 mg/day for ASUC</li>
+          </ul>
+          <p class="note"><span class="no">Not for maintenance.</span> Bridge to steroid-sparing therapy only.</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col"><p class="note">Not a primary recommendation for mild disease</p></td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>Corticosteroids as bridge to advanced therapy only</li>
+          </ul>
+          <p class="note"><span class="no">Against</span> corticosteroids for maintenance. AGA suggests upfront advanced therapy over step-up approach.</p>
+        </td>
+      </tr>
+
+      <!-- Advanced Therapy Naive -->
+      <tr>
+        <td class="cat" rowspan="2">Advanced Therapy — Biologic Naïve</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col"><p class="note">Advanced therapy typically not first-line for mild-moderate UC; consider if 5-ASA failure or steroid-dependent</p></td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>Anti-TNF: infliximab, adalimumab, golimumab <span class="str"></span></li>
+            <li>Vedolizumab <span class="str"></span></li>
+            <li>Ustekinumab</li>
+            <li>Tofacitinib (JAK; see FDA labeling note)</li>
+          </ul>
+          <p class="note">ACG 2019 predates risankizumab, guselkumab, mirikizumab, upadacitinib, ozanimod, etrasimod</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col"><p class="note">Not addressed in mild-mod guideline; escalate per mod-severe guideline if failing 5-ASA</p></td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li><span class="tag t-hi">HIGH</span> Infliximab, golimumab, vedolizumab, tofacitinib, upadacitinib, ustekinumab, ozanimod, etrasimod, risankizumab, guselkumab <span class="str"></span></li>
+            <li><span class="tag t-lo">LOW</span> Adalimumab, filgotinib, mirikizumab (suggest over no treatment)</li>
+          </ul>
+          <p class="note">Upfront advanced therapy suggested over step-up approach</p>
+        </td>
+      </tr>
+
+      <!-- Advanced Therapy Prior Exposure -->
+      <tr>
+        <td class="cat" rowspan="2">Advanced Therapy — Prior Biologic Exposure</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col">—</td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>Switch to non-TNF biologic or JAK inhibitor after TNF failure</li>
+            <li>Vedolizumab, tofacitinib, ustekinumab are options</li>
+          </ul>
+          <p class="note">Newer agents not in 2019 guideline — refer to AGA 2024 for current recommendations</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col">—</td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li><span class="tag t-hi">HIGH</span> Tofacitinib, upadacitinib, ustekinumab — preferred after prior biologic</li>
+            <li><span class="tag t-int">INT</span> Filgotinib, mirikizumab, risankizumab, guselkumab</li>
+            <li><span class="tag t-lo">LOW</span> Adalimumab, vedolizumab, ozanimod, etrasimod — less preferred after prior biologic</li>
+          </ul>
+        </td>
+      </tr>
+
+      <!-- ASUC -->
+      <tr>
+        <td class="cat" rowspan="2">Acute Severe UC (Hospitalized)</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col">—</td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>IV methylprednisolone or IV hydrocortisone</li>
+            <li>Rescue: infliximab or cyclosporine if steroid-refractory at 3 days</li>
+            <li>VTE prophylaxis strongly recommended</li>
+            <li>Colectomy if medically refractory</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col">—</td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>IV corticosteroids as initial therapy</li>
+            <li>Rescue: accelerated infliximab (3-dose induction), cyclosporine, or tofacitinib</li>
+            <li>Transition to outpatient advanced therapy after discharge</li>
+          </ul>
+        </td>
+      </tr>
+
+      <tr class="src-row"><td colspan="4">Sources: AGA Mild-Mod UC Guideline (Gastroenterology 2019) · AGA Living Mod-Severe UC Guideline (Gastroenterology 2024; DOI: 10.1053/j.gastro.2024.10.001; reviewed March 2026 — no changes) · ACG UC Guideline (Am J Gastroenterol 2019; DOI: 10.14309/ajg.0000000000000152)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CROHN'S DISEASE
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-cd">
+  <div class="sec-label">
+    <div class="sl-cat">Category / Society</div>
+    <div class="sl-mild">Mild-to-Moderate CD</div>
+    <div class="sl-mod">Moderate-to-Severe CD</div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:150px">Category</th>
+        <th style="width:68px">Society</th>
+        <th class="mild-col">Mild-to-Moderate — Induction &amp; Maintenance</th>
+        <th class="mod-col">Moderate-to-Severe — Induction &amp; Maintenance</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- 5-ASA -->
+      <tr>
+        <td class="cat" rowspan="2">5-ASA / Sulfasalazine</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col">
+          <p class="note"><span class="no">Against:</span> Oral mesalamine for induction or maintenance in any CD <span class="str"></span></p>
+          <ul class="dl"><li>Sulfasalazine: only for mild colonic CD (limited role)</li></ul>
+        </td>
+        <td class="mod-col"><p class="note"><span class="no">Against:</span> 5-ASA for moderate-severe CD</p></td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col"><p class="note">Not addressed (pharmacologic guidelines focus on moderate-severe)</p></td>
+        <td class="mod-col"><p class="note">Not addressed</p></td>
+      </tr>
+
+      <!-- Budesonide -->
+      <tr>
+        <td class="cat" rowspan="2">Budesonide (Ileal-Release)</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col">
+          <ul class="dl"><li>Budesonide CIR 9 mg/day for mild-moderate ileocecal CD — induction <span class="str"></span></li></ul>
+          <p class="note"><span class="no">Against:</span> Budesonide for maintenance <span class="str"></span>. Taper after 8–16 weeks.</p>
+        </td>
+        <td class="mod-col"><p class="note">Ileal-release budesonide insufficient for moderate-severe disease; use systemic corticosteroids</p></td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col"><p class="note">Not addressed in pharmacologic guideline</p></td>
+        <td class="mod-col"><p class="note">Not addressed</p></td>
+      </tr>
+
+      <!-- Dietary -->
+      <tr>
+        <td class="cat" rowspan="1">Dietary Therapy</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col">
+          <ul class="dl">
+            <li>Mediterranean or Specific Carbohydrate Diet for select low-risk mild CD (DINE-CD data)</li>
+          </ul>
+          <p class="note">Close monitoring required. Not a substitute for timely escalation. New in ACG 2025.</p>
+        </td>
+        <td class="mod-col"><p class="note">Dietary therapy not appropriate as primary therapy for moderate-severe CD</p></td>
+      </tr>
+
+      <!-- Corticosteroids -->
+      <tr>
+        <td class="cat" rowspan="2">Systemic Corticosteroids</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col"><p class="note">Systemic steroids generally avoided for mild disease; budesonide preferred for ileocecal disease</p></td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>Systemic corticosteroids for induction — limit to &lt;3 months <span class="str"></span></li>
+            <li>IV corticosteroids for severe/fulminant inpatient CD</li>
+            <li>Infliximab may be used inpatient for severe/fulminant disease</li>
+          </ul>
+          <p class="note"><span class="no">Against:</span> Corticosteroids for maintenance. Structured taper required.</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col"><p class="note">Not addressed as primary recommendation</p></td>
+        <td class="mod-col">
+          <ul class="dl"><li>Corticosteroids as bridge to advanced therapy only</li></ul>
+          <p class="note"><span class="no">Against:</span> Maintenance corticosteroids. Upfront advanced therapy suggested over step-up with corticosteroids.</p>
+        </td>
+      </tr>
+
+      <!-- Immunomodulators -->
+      <tr>
+        <td class="cat" rowspan="2">Immunomodulators (Thiopurines / MTX)</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col">
+          <ul class="dl">
+            <li>Thiopurines (AZA/6-MP) for steroid-sparing maintenance <span class="str"></span></li>
+            <li>MTX SQ/IM ≤25 mg/week for steroid-dependent CD</li>
+          </ul>
+          <p class="note"><span class="no">Against:</span> Thiopurines for induction monotherapy. TPMT/NUDT15 before starting.</p>
+        </td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>IFX + thiopurine combination superior to monotherapy (SONIC) <span class="str"></span></li>
+            <li>MTX SQ/IM for maintenance of steroid-induced remission</li>
+          </ul>
+          <p class="note"><span class="no">Against:</span> TNF antagonist withdrawal if in steroid-free remission ≥6 months on combo therapy</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col"><p class="note">Not addressed in pharmacologic guideline (mild-mod)</p></td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>IFX + thiopurine preferred over IFX monotherapy (thiopurine-naïve starting IFX)</li>
+            <li>MTX SQ/IM for maintenance of steroid-induced remission</li>
+          </ul>
+          <p class="note"><span class="no">Against:</span> Thiopurine monotherapy for induction. Against oral MTX.<br>No rec for IFX + MTX vs. monotherapy; no rec for ADA + immunomodulator vs. monotherapy</p>
+        </td>
+      </tr>
+
+      <!-- Advanced Therapy Naive -->
+      <tr>
+        <td class="cat" rowspan="2">Advanced Therapy — Biologic Naïve</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col"><p class="note">Consider advanced therapy for mild CD with high-risk features (young, penetrating, extensive). Against requiring step-up failure first (conditional).</p></td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>Anti-TNF (infliximab, adalimumab, certolizumab) <span class="str"></span></li>
+            <li>Vedolizumab, ustekinumab, upadacitinib</li>
+            <li>Biosimilars for IFX/ADA/ustekinumab effective de novo</li>
+            <li>SC infliximab, SC vedolizumab as new maintenance options (2025)</li>
+          </ul>
+          <p class="note">No head-to-head preference for naïve patients. Against requiring conventional therapy failure first (conditional).</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col"><p class="note">Not addressed in pharmacologic guideline</p></td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li><span class="tag t-hi">HIGH</span> Infliximab, adalimumab, vedolizumab, ustekinumab, risankizumab, mirikizumab, guselkumab <span class="str"></span></li>
+            <li><span class="tag t-lo">LOW</span> Certolizumab pegol, upadacitinib (suggested, lower-efficacy tier for naïve)</li>
+          </ul>
+          <p class="note">Prefer higher-efficacy over lower-efficacy agents in naïve patients. Upfront advanced therapy over step-up approach (conditional).</p>
+        </td>
+      </tr>
+
+      <!-- Advanced Therapy Prior -->
+      <tr>
+        <td class="cat" rowspan="2">Advanced Therapy — Prior Biologic Exposure</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col">—</td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li>Upadacitinib <span class="str"></span></li>
+            <li>Risankizumab (preferred over ustekinumab after anti-TNF failure)</li>
+            <li>Guselkumab, mirikizumab</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="soc"><span class="badge b-aga">AGA</span></td>
+        <td class="mild-col">—</td>
+        <td class="mod-col">
+          <ul class="dl">
+            <li><span class="tag t-hi">HIGH</span> Adalimumab, risankizumab, guselkumab, upadacitinib</li>
+            <li><span class="tag t-int">INT</span> Ustekinumab, mirikizumab</li>
+            <li><span class="tag t-lo">LOW</span> Vedolizumab, certolizumab pegol (less preferred after prior biologic)</li>
+          </ul>
+          <p class="note">Higher-efficacy dose for risankizumab, guselkumab, upadacitinib may be preferred in high inflammation burden or prior TNF failure</p>
+        </td>
+      </tr>
+
+      <!-- Observation -->
+      <tr>
+        <td class="cat">Observation / No Treatment</td>
+        <td class="soc"><span class="badge b-acg">ACG</span></td>
+        <td class="mild-col">
+          <ul class="dl"><li>Reasonable for asymptomatic (silent) low-risk mild CD with close monitoring</li></ul>
+        </td>
+        <td class="mod-col"><p class="note">Not appropriate for moderate-severe disease</p></td>
+      </tr>
+
+      <tr class="src-row"><td colspan="4">Sources: AGA Living CD Pharmacologic Guideline (Gastroenterology 2025;169(7):1397–1448; DOI: 10.1053/j.gastro.2025.09.038; reviewed March 2026 — no changes) · AGA CD Fistulizing Guideline (Gastroenterology 2021;160(7):2496–2508; DOI: 10.1053/j.gastro.2021.04.022) · ACG CD Guideline 2025 (Am J Gastroenterol 2025;120(6):1225–1264; DOI: 10.14309/ajg.0000000000003465)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BIOMARKERS
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-bm">
+  <!-- UC Biomarkers -->
+  <div class="bm-section" style="background:#e8f2fb; color:#0d3d6b;">Biomarkers — Ulcerative Colitis &nbsp;·&nbsp; AGA 2023 (Gastroenterology 164(3):344–372; DOI: 10.1053/j.gastro.2022.12.007)</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:200px">Clinical Scenario</th>
+        <th>Biomarker Guidance</th>
+        <th style="width:280px">Action / Interpretation</th>
+        <th style="width:180px">Key Cutoffs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cat">Symptomatic Remission — Monitoring</td>
+        <td>
+          <ul class="dl">
+            <li>Combine biomarker + symptom monitoring rather than symptoms alone (conditional)</li>
+            <li>Monitor every 6–12 months</li>
+            <li>Fecal calprotectin or fecal lactoferrin preferred over CRP alone</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="dl">
+            <li><strong>Normal biomarkers:</strong> Rule out active inflammation; avoid routine endoscopy</li>
+            <li><strong>Elevated biomarkers:</strong> Endoscopic assessment before treatment adjustment</li>
+          </ul>
+        </td>
+        <td>
+          FC &lt;150 µg/g, normal fecal lactoferrin, or normal CRP → rules out active inflammation<br>
+          <span class="note">FC &lt;50 µg/g preferred if recent treatment change (past 1–3 mo) to detect mucosal healing (MES 0 or 1)</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="cat">Symptomatic Remission — Without Recent Endoscopic Confirmation</td>
+        <td>
+          <ul class="dl">
+            <li>If no recent endoscopy (within ~3 years) or change in clinical status: consider endoscopic evaluation rather than relying solely on biomarkers</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="dl">
+            <li>Elevated biomarkers in remission without endoscopic confirmation → endoscopy to inform treatment decisions</li>
+          </ul>
+        </td>
+        <td>FC &gt;150 µg/g + no recent endoscopy → scope before changing therapy</td>
+      </tr>
+      <tr>
+        <td class="cat">Active Symptoms — Moderate-to-Severe</td>
+        <td>
+          <ul class="dl">
+            <li>FC or fecal lactoferrin or elevated CRP can rule in active inflammation</li>
+            <li>Avoids routine endoscopy if biomarkers elevated</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="dl">
+            <li>Elevated biomarkers confirm active disease → proceed with treatment adjustment</li>
+            <li>Normal biomarkers with moderate-severe symptoms → endoscopy to rule out alternative diagnosis</li>
+          </ul>
+        </td>
+        <td>FC &gt;150 µg/g or elevated CRP → active inflammation likely</td>
+      </tr>
+      <tr>
+        <td class="cat">Biomarker vs. Endoscopy Monitoring Strategy</td>
+        <td>
+          <ul class="dl">
+            <li>No recommendation for or against biomarker-based monitoring over endoscopy-based monitoring for long-term outcomes (knowledge gap)</li>
+          </ul>
+        </td>
+        <td><p class="note">Insufficient RCT data comparing strategies head-to-head in UC</p></td>
+        <td>—</td>
+      </tr>
+      <tr class="src-row"><td colspan="4">All recommendations conditional (weak). Biomarkers covered: serum CRP, fecal calprotectin, fecal lactoferrin. Hospitalized/ASUC not covered by this guideline.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- CD Biomarkers -->
+  <div class="bm-section" style="background:#e6f4ec; color:#0d3d1c; border-top: 2px solid var(--border);">Biomarkers — Crohn's Disease &nbsp;·&nbsp; AGA 2023 (Gastroenterology 165(6):1367–1399; DOI: 10.1053/j.gastro.2023.09.029)</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:200px">Clinical Scenario</th>
+        <th>Biomarker Guidance</th>
+        <th style="width:280px">Action / Interpretation</th>
+        <th style="width:180px">Key Cutoffs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cat">Asymptomatic / Symptomatic Remission</td>
+        <td>
+          <ul class="dl">
+            <li>Biomarker + symptom monitoring strategy rather than symptoms alone (conditional)</li>
+            <li>FC and CRP can inform disease management in both asymptomatic and symptomatic disease</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="dl">
+            <li><strong>With recent endoscopic remission confirmed:</strong> FC &lt;150 µg/g and/or CRP &lt;5 mg/L rules out active inflammation; avoid routine endoscopy</li>
+            <li><strong>Without recent endoscopic remission:</strong> Endoscopic evaluation recommended rather than relying on biomarkers alone</li>
+          </ul>
+        </td>
+        <td>FC &lt;150 µg/g + CRP &lt;5 mg/L (in stable disease with prior endoscopic remission) → rules out active inflammation</td>
+      </tr>
+      <tr>
+        <td class="cat">Active Symptoms — Mild</td>
+        <td>
+          <ul class="dl">
+            <li>Neither normal nor elevated biomarkers alone are sufficiently accurate to determine endoscopic activity in mild symptoms</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="dl">
+            <li>Elevated biomarkers → endoscopic assessment rather than empiric treatment change</li>
+            <li>Normal biomarkers → endoscopic assessment rather than empiric treatment change</li>
+          </ul>
+        </td>
+        <td>FC &gt;150 µg/g or CRP &gt;5 mg/L with mild symptoms → scope before changing therapy (cannot act on biomarkers alone)</td>
+      </tr>
+      <tr>
+        <td class="cat">Active Symptoms — Moderate-to-Severe</td>
+        <td>
+          <ul class="dl">
+            <li>Elevated FC or CRP suggests endoscopic activity → can act without routine endoscopy</li>
+            <li>Biomarker-based assessment + treatment adjustment strategy over symptoms alone (conditional, moderate certainty)</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="dl">
+            <li>Elevated biomarkers → treatment adjustment supported without mandatory endoscopy first</li>
+            <li>Normal biomarkers with moderate-severe symptoms → endoscopy to investigate discordance</li>
+          </ul>
+        </td>
+        <td>FC &gt;150 µg/g or CRP &gt;5 mg/L with moderate-severe symptoms → active inflammation confirmed; treat accordingly</td>
+      </tr>
+      <tr>
+        <td class="cat">Post-Op Remission (Surgically Induced) — Low-Risk or on Prophylaxis</td>
+        <td>
+          <ul class="dl">
+            <li>FC can reliably rule out endoscopic recurrence in low-risk patients on pharmacologic prophylaxis</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="dl">
+            <li>FC &lt;50 µg/g → avoid routine endoscopy (within 12 months post-op)</li>
+            <li>FC &lt;150 µg/g may also rule out recurrence in low-risk + on prophylaxis</li>
+          </ul>
+          <p class="note">CRP alone NOT sufficient to rule out post-op endoscopic recurrence</p>
+        </td>
+        <td>FC &lt;50 µg/g (strong threshold); FC &lt;150 µg/g acceptable in low-risk + prophylaxis</td>
+      </tr>
+      <tr>
+        <td class="cat">Post-Op Remission — High-Risk or Not on Prophylaxis</td>
+        <td>
+          <ul class="dl">
+            <li>Endoscopic assessment recommended for establishing post-op recurrence in other settings</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="dl">
+            <li>Endoscopy within 6–12 months post-op to assess for recurrence if high-risk or not on prophylaxis</li>
+          </ul>
+        </td>
+        <td>Do not rely on biomarkers alone — scope required</td>
+      </tr>
+      <tr>
+        <td class="cat">Endoscopic Healing Index (EHI / Monitr)</td>
+        <td>
+          <ul class="dl">
+            <li>EHI is a serum protein-based composite biomarker. Studied as surrogate for endoscopic activity in CD.</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="dl">
+            <li>EHI &lt;20: likely endoscopic remission (SES-CD &lt;3)</li>
+            <li>May be used similarly to FC/CRP in clinical decision-making</li>
+          </ul>
+          <p class="note">Less widely adopted than FC/CRP; less data available</p>
+        </td>
+        <td>EHI &lt;20 → low likelihood of active endoscopic disease</td>
+      </tr>
+      <tr class="src-row"><td colspan="4">All recommendations conditional (weak). Biomarkers covered: serum CRP, fecal calprotectin, Endoscopic Healing Index (EHI/Monitr). Fecal lactoferrin not extensively studied in CD.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════
+     POUCHITIS
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-po">
+  <div class="bm-section" style="background:#f0eefb; color:#3a1c8a;">Pouchitis &amp; Inflammatory Pouch Disorders &nbsp;·&nbsp; AGA 2024 (Gastroenterology 166(1):59–85; DOI: 10.1053/j.gastro.2023.10.015)</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:200px">Pouch Disorder Type</th>
+        <th style="width:180px">Definition</th>
+        <th>Treatment Recommendations</th>
+        <th style="width:240px">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- Primary Prevention -->
+      <tr>
+        <td style="background:#f9f9fb; font-weight:600; color:var(--muted);" colspan="4"><small>PRIMARY PREVENTION (pre-pouchitis)</small></td>
+      </tr>
+      <tr>
+        <td class="cat">Primary Prevention — Probiotics</td>
+        <td>Post-IPAA, no prior pouchitis episodes</td>
+        <td>
+          <ul class="dl">
+            <li>No recommendation for or against probiotics for primary prevention (knowledge gap)</li>
+          </ul>
+          <p class="note">Insufficient trial evidence to inform primary prevention with probiotics</p>
+        </td>
+        <td><span class="note">Cost and long-term burden of probiotics must be weighed against limited data on benefit</span></td>
+      </tr>
+      <tr>
+        <td class="cat">Primary Prevention — Antibiotics</td>
+        <td>Post-IPAA, no prior pouchitis episodes</td>
+        <td>
+          <ul class="dl">
+            <li><span class="no">Against</span> using antibiotics for primary prevention of pouchitis (conditional)</li>
+          </ul>
+        </td>
+        <td><span class="note">Risk of antibiotic resistance and adverse effects outweigh unproven preventive benefit</span></td>
+      </tr>
+
+      <!-- Intermittent -->
+      <tr>
+        <td style="background:#ecf6ff; font-weight:600; color:#1a4a7a;" colspan="4"><small>INTERMITTENT POUCHITIS (infrequent episodes, antibiotic-responsive)</small></td>
+      </tr>
+      <tr>
+        <td class="cat">Intermittent Pouchitis — Treatment</td>
+        <td>Infrequent episodes; respond to antibiotics; no rapid relapse</td>
+        <td>
+          <ul class="dl">
+            <li>Antibiotics for treatment — ciprofloxacin or metronidazole for 2–4 weeks (conditional, very low certainty)</li>
+            <li>Combination cipro + metronidazole for refractory acute episodes</li>
+          </ul>
+          <p class="note">Pouchoscopy not required before antibiotic initiation in typical presentations. Scope if atypical symptoms.</p>
+        </td>
+        <td><span class="note">Ciprofloxacin preferred over metronidazole based on tolerability data. Both are first-line options.</span></td>
+      </tr>
+
+      <!-- Recurrent / CADP -->
+      <tr>
+        <td style="background:#fff4e0; font-weight:600; color:#7a4900;" colspan="4"><small>CHRONIC ANTIBIOTIC-DEPENDENT POUCHITIS (CADP) — recurrent episodes responsive to antibiotics but relapse off antibiotics</small></td>
+      </tr>
+      <tr>
+        <td class="cat">CADP — Prevention of Recurrence</td>
+        <td>Recurrent pouchitis that responds to antibiotics but relapses within days-weeks of stopping</td>
+        <td>
+          <ul class="dl">
+            <li>Probiotics (multi-strain, e.g. VSL#3) to prevent recurrent pouchitis after antibiotic course (conditional, low certainty)</li>
+            <li>Chronic antibiotic therapy at lowest effective dose with cycling/intermittent gaps (conditional)</li>
+          </ul>
+          <p class="note">Pouchoscopy recommended before escalating beyond antibiotics to confirm diagnosis and rule out Crohn's-like disease</p>
+        </td>
+        <td><span class="note">In patients intolerant to antibiotics or concerned about long-term antibiotic risks: advanced immunosuppressive therapies (biologics/small molecules approved for IBD)</span></td>
+      </tr>
+
+      <!-- CARP -->
+      <tr>
+        <td style="background:#fdecea; font-weight:600; color:#8a1c1c;" colspan="4"><small>CHRONIC ANTIBIOTIC-REFRACTORY POUCHITIS (CARP) — inadequate response to antibiotics</small></td>
+      </tr>
+      <tr>
+        <td class="cat">CARP — Treatment</td>
+        <td>Relapsing-remitting or continuous symptoms that do NOT respond to antibiotics</td>
+        <td>
+          <ul class="dl">
+            <li>Advanced immunosuppressive therapies — biologics and/or oral small molecules approved for IBD (conditional, low certainty for vedolizumab; very low for others)</li>
+            <li>Corticosteroids (oral budesonide controlled-release preferred) may also be considered</li>
+          </ul>
+          <p class="note">Vedolizumab has best RCT data (EARNEST trial). Adalimumab has retrospective data. Other biologics/JAK inhibitors used by expert consensus.</p>
+        </td>
+        <td><span class="note">Pouchoscopy required before initiating advanced therapy to confirm CARP diagnosis and exclude Crohn's-like disease of the pouch</span></td>
+      </tr>
+
+      <!-- Crohn's-like disease of the pouch -->
+      <tr>
+        <td style="background:#f0eefb; font-weight:600; color:#4a1fa0;" colspan="4"><small>CROHN'S-LIKE DISEASE OF THE POUCH (CDP) — fistulas, strictures, or prepouch ileitis ≥12 months post-IPAA</small></td>
+      </tr>
+      <tr>
+        <td class="cat">Crohn's-like Disease of the Pouch</td>
+        <td>Fistula, stricture, or prepouch ileitis developing ≥12 months after final-stage IPAA surgery</td>
+        <td>
+          <ul class="dl">
+            <li>Advanced immunosuppressive therapies — biologics and/or oral small molecules approved for IBD (conditional)</li>
+            <li>Corticosteroids may be considered as bridge</li>
+          </ul>
+          <p class="note">Similar treatment approach to CD management. Vedolizumab and anti-TNF agents have supporting data.</p>
+        </td>
+        <td><span class="note">Multidisciplinary evaluation with colorectal surgery recommended. Risk of pouch failure increases with CDP. Consider referral to IBD center of excellence.</span></td>
+      </tr>
+
+      <!-- Cuffitis -->
+      <tr>
+        <td style="background:#f0faf4; font-weight:600; color:#1a5c30;" colspan="4"><small>CUFFITIS — inflammation of the residual rectal cuff</small></td>
+      </tr>
+      <tr>
+        <td class="cat">Cuffitis</td>
+        <td>Inflammation of the residual rectal mucosa (rectal cuff) below the pouch-anal anastomosis</td>
+        <td>
+          <ul class="dl">
+            <li>Topical 5-ASA suppositories or rectal corticosteroids (first-line, by analogy with UC proctitis management)</li>
+            <li>Advanced immunosuppressive therapy if refractory to topical agents</li>
+          </ul>
+          <p class="note">Guideline recommendations for cuffitis are based primarily on expert opinion; limited RCT data specific to cuffitis</p>
+        </td>
+        <td><span class="note">Distinguish from pouchitis by pouchoscopy — cuffitis involves only the cuff, not the pouch body</span></td>
+      </tr>
+
+      <!-- Endoscopic Evaluation -->
+      <tr>
+        <td class="cat" style="background:#f5f7fb;">When to Scope (Pouchoscopy)</td>
+        <td style="background:#f5f7fb;">—</td>
+        <td style="background:#f5f7fb;">
+          <ul class="dl">
+            <li>Frequent recurrent episodes (suspected CADP)</li>
+            <li>Inadequate antibiotic response before escalating therapy (suspected CARP)</li>
+            <li>Atypical symptoms</li>
+            <li>When Crohn's-like disease of the pouch is being considered</li>
+          </ul>
+          <p class="note"><span class="no">Not required:</span> Before antibiotics for typical intermittent pouchitis or in infrequent episodes</p>
+        </td>
+        <td style="background:#f5f7fb;"><span class="note">Pouchoscopy should include evaluation of the afferent limb (prepouch ileum) and biopsy if Crohn's-like disease is suspected</span></td>
+      </tr>
+
+      <tr class="src-row"><td colspan="4">Source: AGA Clinical Practice Guideline on the Management of Pouchitis and Inflammatory Pouch Disorders. Gastroenterology 2024;166(1):59–85. DOI: 10.1053/j.gastro.2023.10.015. All 9 recommendations are conditional (weak). No ACG pouchitis guideline exists.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footnotes">
+  <strong>Abbreviations:</strong> 5-ASA = aminosalicylate · AZA = azathioprine · 6-MP = 6-mercaptopurine · IFX = infliximab · ADA = adalimumab · GOL = golimumab · MTX = methotrexate · JAK = Janus kinase · CIR = controlled ileal release · ASUC = acute severe ulcerative colitis · IPAA = ileal pouch-anal anastomosis · CADP = chronic antibiotic-dependent pouchitis · CARP = chronic antibiotic-refractory pouchitis · CDP = Crohn's-like disease of the pouch · FC = fecal calprotectin · EHI = Endoscopic Healing Index · SES-CD = Simple Endoscopic Score for CD · SC = subcutaneous · IM = intramuscular · IV = intravenous · VTE = venous thromboembolism · ★ = Strong recommendation; all others conditional unless noted<br>
+  <strong>Key notes:</strong> ACG 2019 UC guideline predates risankizumab, guselkumab, mirikizumab, upadacitinib, ozanimod, and etrasimod — updated ACG UC guideline pending. JAK inhibitors carry FDA label preferring use after TNF antagonist failure given risk profile. AGA living guidelines (UC mod-severe 2024, CD mod-severe 2025) reviewed March 2026 — no changes issued.
+</div>
+
+<script>
+function show(name, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function buildMobileView() {
+  if (window.innerWidth > 700) return;
+
+  ['uc', 'cd'].forEach(id => {
+    const panel = document.getElementById('panel-' + id);
+    if (panel.dataset.mobileBuilt) return;
+    panel.dataset.mobileBuilt = '1';
+
+    // Hide original sec-label and tables
+    panel.querySelectorAll('.sec-label, table').forEach(el => el.classList.add('mobile-hidden'));
+
+    // Collect all data rows (exclude src-row)
+    // Each category has 2 tr's (AGA + ACG) sharing same cat label
+    const rows = Array.from(panel.querySelectorAll('tbody tr:not(.src-row)'));
+
+    // Build data structure: group by category
+    const cats = [];
+    let currentCat = null;
+    rows.forEach(tr => {
+      const catCell = tr.querySelector('td.cat');
+      if (catCell) {
+        currentCat = {
+          label: catCell.textContent.trim(),
+          societies: []
+        };
+        cats.push(currentCat);
+      }
+      if (currentCat) {
+        const soc = tr.querySelector('td.soc');
+        const mild = tr.querySelector('td.mild-col');
+        const mod  = tr.querySelector('td.mod-col');
+        if (soc || mild || mod) {
+          currentCat.societies.push({
+            soc:  soc  ? soc.innerHTML  : '',
+            mild: mild ? mild.innerHTML : '',
+            mod:  mod  ? mod.innerHTML  : ''
+          });
+        }
+      }
+    });
+
+    // Helper: build an accordion section
+    function buildSection(title, colorClass, colKey) {
+      const section = document.createElement('div');
+      const head = document.createElement('div');
+      head.className = 'mob-section-head ' + colorClass;
+      head.textContent = title;
+      section.appendChild(head);
+
+      cats.forEach(cat => {
+        const catRow = document.createElement('div');
+        catRow.className = 'mob-cat-row';
+        catRow.textContent = cat.label;
+
+        const content = document.createElement('div');
+        content.className = 'mob-content';
+
+        cat.societies.forEach(s => {
+          if (!s[colKey] || s[colKey].trim() === '—') return;
+          const row = document.createElement('div');
+          row.className = 'mob-society-row';
+          const label = document.createElement('div');
+          label.className = 'mob-soc-label ' + (s.soc.includes('b-aga') ? 'b-aga' : 'b-acg');
+          label.innerHTML = s.soc;
+          row.appendChild(label);
+          const body = document.createElement('div');
+          body.innerHTML = s[colKey];
+          row.appendChild(body);
+          content.appendChild(row);
+        });
+
+        if (!content.children.length) {
+          const row = document.createElement('div');
+          row.className = 'mob-society-row';
+          row.innerHTML = '<span style="color:var(--faint);font-style:italic;font-size:11px">No specific recommendations for this severity</span>';
+          content.appendChild(row);
+        }
+
+        catRow.addEventListener('click', () => {
+          catRow.classList.toggle('open');
+          content.classList.toggle('open');
+        });
+
+        section.appendChild(catRow);
+        section.appendChild(content);
+      });
+
+      return section;
+    }
+
+    const mildSection = buildSection('Mild-to-Moderate', 'mob-mild-head', 'mild');
+    const modSection  = buildSection('Moderate-to-Severe', 'mob-mod-head', 'mod');
+
+    panel.appendChild(mildSection);
+    panel.appendChild(modSection);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', buildMobileView);
+window.addEventListener('resize', buildMobileView);
+</script>
+</body>
+</html>
